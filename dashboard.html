@@ -18,118 +18,114 @@
 --ink-08:rgba(26,25,22,0.05);
 --accent:#1B6B45;
 --accent-light:#E8F3EE;
---accent-mid:#2D9E68;
 --warn:#D4521A;
 --warn-light:#FBF0EB;
 --blue:#1B4F8A;
 --blue-light:#EBF1FA;
 --serif:'Fraunces',Georgia,serif;
 --sans:'DM Sans',sans-serif;
---r:10px;
---r-lg:16px;
---sidebar:240px;
+--r:10px;--r-lg:16px;--sidebar:220px;
 }
 html,body{height:100%;margin:0}
-body{font-family:var(--sans);background:#F0EDE7;color:var(--ink);display:flex;flex-direction:column;min-height:100vh}
+body{font-family:var(--sans);background:#EDEAE4;color:var(--ink);min-height:100vh}
 
-/* TOP NAV */
-.topnav{position:fixed;top:0;left:0;right:0;height:56px;background:rgba(245,242,236,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--ink-20);display:flex;align-items:center;padding:0 1.5rem;gap:1rem;z-index:100;justify-content:space-between}
-.topnav-logo{font-family:var(--serif);font-weight:400;font-size:1rem;letter-spacing:-0.01em;text-decoration:none;color:var(--ink)}
+/* NAV */
+.topnav{position:fixed;top:0;left:0;right:0;height:54px;background:rgba(245,242,236,0.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--ink-20);display:flex;align-items:center;padding:0 1.25rem;z-index:100;justify-content:space-between}
+.topnav-logo{font-family:var(--serif);font-weight:400;font-size:1rem;text-decoration:none;color:var(--ink)}
 .topnav-logo span{color:var(--accent);font-style:italic}
-.topnav-right{display:flex;align-items:center;gap:1rem}
-.user-pill{display:flex;align-items:center;gap:0.5rem;background:#fff;border:1px solid var(--ink-20);border-radius:100px;padding:0.3rem 0.7rem 0.3rem 0.3rem}
-.user-avatar{width:26px;height:26px;border-radius:50%;object-fit:cover}
-.user-avatar-placeholder{width:26px;height:26px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:500;color:var(--accent)}
-.user-name{font-size:0.8rem;font-weight:500;color:var(--ink)}
-.signout-btn{font-size:0.75rem;font-weight:400;color:var(--ink-60);background:none;border:none;cursor:pointer;transition:color 0.2s;padding:0.3rem 0.5rem}
-.signout-btn:hover{color:var(--warn)}
+.topnav-right{display:flex;align-items:center;gap:0.75rem}
+.user-pill{display:flex;align-items:center;gap:0.45rem;background:#fff;border:1px solid var(--ink-20);border-radius:100px;padding:0.25rem 0.65rem 0.25rem 0.25rem}
+.user-avatar{width:24px;height:24px;border-radius:50%;object-fit:cover}
+.user-initial{width:24px;height:24px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:0.68rem;font-weight:600;color:var(--accent);flex-shrink:0}
+.user-name{font-size:0.78rem;font-weight:500;color:var(--ink)}
+.signout-btn{font-size:0.72rem;color:var(--ink-60);background:none;border:none;cursor:pointer;padding:0.3rem 0.5rem;border-radius:6px;transition:background 0.15s,color 0.15s}
+.signout-btn:hover{background:var(--warn-light);color:var(--warn)}
 
 /* LAYOUT */
-.app{display:flex;padding-top:56px;min-height:calc(100vh - 56px)}
+.app{display:flex;padding-top:54px;min-height:calc(100vh - 54px)}
 
 /* SIDEBAR */
-.sidebar{width:var(--sidebar);flex-shrink:0;background:var(--cream);border-right:1px solid var(--ink-20);padding:1.25rem 0;position:fixed;top:56px;bottom:0;overflow-y:auto}
-.sidebar-section{margin-bottom:1.5rem}
-.sidebar-label{font-size:0.65rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-60);padding:0 1.1rem;margin-bottom:0.5rem;display:block}
-.sidebar-item{display:flex;align-items:center;gap:0.6rem;padding:0.55rem 1.1rem;font-size:0.82rem;font-weight:400;color:var(--ink-60);cursor:pointer;transition:background 0.15s,color 0.15s;border-radius:0;position:relative}
-.sidebar-item:hover{background:var(--ink-08);color:var(--ink)}
-.sidebar-item.active{background:var(--accent-light);color:var(--accent);font-weight:500}
-.sidebar-item.active::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2.5px;background:var(--accent);border-radius:0 2px 2px 0}
-.sidebar-count{margin-left:auto;font-size:0.68rem;font-weight:500;background:var(--ink-20);color:var(--ink-60);padding:0.1rem 0.45rem;border-radius:100px;min-width:20px;text-align:center}
-.sidebar-item.active .sidebar-count{background:rgba(27,107,69,0.15);color:var(--accent)}
+.sidebar{width:var(--sidebar);flex-shrink:0;background:var(--cream);border-right:1px solid var(--ink-20);padding:1rem 0;position:fixed;top:54px;bottom:0;overflow-y:auto}
+.sb-label{font-size:0.62rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-60);padding:0 1rem;margin-bottom:0.4rem;display:block;margin-top:0.75rem}
+.sb-item{display:flex;align-items:center;gap:0.55rem;padding:0.5rem 1rem;font-size:0.8rem;font-weight:400;color:var(--ink-60);cursor:pointer;transition:all 0.15s;position:relative;user-select:none}
+.sb-item:hover{background:var(--ink-08);color:var(--ink)}
+.sb-item.active{background:var(--accent-light);color:var(--accent);font-weight:500}
+.sb-item.active::before{content:'';position:absolute;left:0;top:20%;bottom:20%;width:2.5px;background:var(--accent);border-radius:0 2px 2px 0}
+.sb-count{margin-left:auto;font-size:0.65rem;font-weight:500;background:var(--ink-20);color:var(--ink-60);padding:0.08rem 0.4rem;border-radius:100px;min-width:18px;text-align:center}
+.sb-item.active .sb-count{background:rgba(27,107,69,0.15);color:var(--accent)}
 
-/* MAIN CONTENT */
-.main{margin-left:var(--sidebar);flex:1;padding:1.5rem;min-height:calc(100vh - 56px)}
+/* MAIN */
+.main{margin-left:var(--sidebar);flex:1;padding:1.25rem;min-height:calc(100vh - 54px)}
 
-/* STATS ROW */
-.stats-row{display:grid;grid-template-columns:repeat(5,1fr);gap:0.75rem;margin-bottom:1.5rem}
-.stat-card{background:#fff;border:1px solid var(--ink-20);border-radius:var(--r-lg);padding:1rem 1.1rem}
-.stat-label{font-size:0.68rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-60);margin-bottom:0.35rem}
-.stat-value{font-family:var(--serif);font-size:2rem;font-weight:300;line-height:1;letter-spacing:-0.03em}
-.stat-sub{font-size:0.7rem;color:var(--ink-60);margin-top:0.25rem}
+/* STATS */
+.stats-row{display:grid;grid-template-columns:repeat(5,1fr);gap:0.65rem;margin-bottom:1.25rem}
+.stat-card{background:#fff;border:1px solid var(--ink-20);border-radius:var(--r-lg);padding:0.9rem 1rem}
+.stat-label{font-size:0.64rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-60);margin-bottom:0.3rem}
+.stat-val{font-family:var(--serif);font-size:1.85rem;font-weight:300;line-height:1;letter-spacing:-0.03em}
+.stat-sub{font-size:0.66rem;color:var(--ink-60);margin-top:0.2rem}
 
-/* EMAIL LIST */
-.list-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.85rem}
-.list-title{font-family:var(--serif);font-weight:300;font-size:1.2rem;letter-spacing:-0.02em}
-.list-meta{font-size:0.75rem;color:var(--ink-60)}
-.refresh-btn{display:flex;align-items:center;gap:0.4rem;font-size:0.78rem;font-weight:400;color:var(--accent);background:var(--accent-light);border:none;border-radius:100px;padding:0.4rem 0.85rem;cursor:pointer;transition:opacity 0.15s}
+/* TOOLBAR */
+.toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.85rem}
+.toolbar-left h2{font-family:var(--serif);font-weight:300;font-size:1.15rem;letter-spacing:-0.02em}
+.toolbar-left p{font-size:0.72rem;color:var(--ink-60);margin-top:0.1rem}
+.refresh-btn{display:flex;align-items:center;gap:0.4rem;font-size:0.75rem;font-weight:500;color:var(--accent);background:var(--accent-light);border:none;border-radius:100px;padding:0.4rem 0.9rem;cursor:pointer;transition:opacity 0.15s}
 .refresh-btn:hover{opacity:0.8}
 .refresh-btn.spinning svg{animation:spin 1s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
+/* EMAIL LIST */
 .email-list{background:#fff;border:1px solid var(--ink-20);border-radius:var(--r-lg);overflow:hidden}
-.email-row{display:flex;align-items:flex-start;gap:0.85rem;padding:0.85rem 1.1rem;border-bottom:1px solid var(--ink-08);transition:background 0.15s;cursor:pointer}
+.email-row{display:flex;align-items:flex-start;gap:0.8rem;padding:0.8rem 1rem;border-bottom:1px solid var(--ink-08);cursor:pointer;transition:background 0.12s}
 .email-row:last-child{border-bottom:none}
 .email-row:hover{background:#fafaf9}
-.email-avatar{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:600;flex-shrink:0;margin-top:2px}
+.email-av{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.68rem;font-weight:600;flex-shrink:0;margin-top:2px}
 .email-body{flex:1;min-width:0}
-.email-from{font-size:0.8rem;font-weight:500;color:var(--ink);margin-bottom:0.1rem}
-.email-subject{font-size:0.8rem;color:var(--ink);margin-bottom:0.15rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:480px}
-.email-preview{font-size:0.72rem;color:var(--ink-60);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:480px}
-.email-meta{display:flex;flex-direction:column;align-items:flex-end;gap:0.3rem;flex-shrink:0}
-.email-time{font-size:0.68rem;color:var(--ink-60)}
-.tag{display:inline-flex;align-items:center;font-size:0.64rem;font-weight:500;padding:0.16rem 0.5rem;border-radius:100px;letter-spacing:0.02em;white-space:nowrap}
+.email-from{font-size:0.78rem;font-weight:500;color:var(--ink);margin-bottom:0.08rem}
+.email-subj{font-size:0.78rem;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:0.12rem}
+.email-snip{font-size:0.7rem;color:var(--ink-60);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.email-meta{display:flex;flex-direction:column;align-items:flex-end;gap:0.28rem;flex-shrink:0}
+.email-date{font-size:0.65rem;color:var(--ink-60)}
+.tag{display:inline-flex;align-items:center;font-size:0.62rem;font-weight:500;padding:0.14rem 0.46rem;border-radius:100px;white-space:nowrap}
 .tag-applied{background:var(--blue-light);color:#0C447C}
 .tag-screening{background:#FFF8E6;color:#7A4F00}
 .tag-interview{background:#F0EBF8;color:#4A2278}
 .tag-rejected{background:#FBE9E9;color:#7A1A1A}
 .tag-offer{background:var(--accent-light);color:#0D4A2A}
-.tag-processing{background:#F5F5F5;color:#888}
-.ai-badge{display:inline-flex;align-items:center;gap:0.22rem;background:var(--ink);color:var(--cream);font-size:0.6rem;font-weight:500;padding:0.14rem 0.44rem;border-radius:100px}
+.ai-badge{font-size:0.6rem;font-weight:500;background:var(--ink);color:var(--cream);padding:0.12rem 0.4rem;border-radius:100px}
 
-/* EMPTY + LOADING STATES */
-.state-box{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3.5rem 2rem;text-align:center;gap:0.85rem}
-.state-icon{width:48px;height:48px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center}
-.state-title{font-family:var(--serif);font-weight:300;font-size:1.2rem}
-.state-desc{font-size:0.82rem;color:var(--ink-60);max-width:300px;line-height:1.65}
-.state-btn{display:inline-flex;align-items:center;gap:0.4rem;background:var(--ink);color:var(--cream);font-family:var(--sans);font-size:0.82rem;font-weight:500;padding:0.6rem 1.25rem;border-radius:100px;border:none;cursor:pointer;margin-top:0.25rem;text-decoration:none}
+/* STATES */
+.state-box{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3rem 2rem;text-align:center;gap:0.75rem}
+.state-ico{width:44px;height:44px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center}
+.state-title{font-family:var(--serif);font-weight:300;font-size:1.15rem}
+.state-desc{font-size:0.8rem;color:var(--ink-60);max-width:300px;line-height:1.65}
+.state-btn{display:inline-flex;align-items:center;gap:0.4rem;background:var(--ink);color:var(--cream);font-family:var(--sans);font-size:0.8rem;font-weight:500;padding:0.6rem 1.2rem;border-radius:100px;border:none;cursor:pointer;margin-top:0.25rem}
 
-/* LOADING SKELETON */
-.skeleton{background:linear-gradient(90deg,var(--ink-08) 25%,var(--ink-20) 50%,var(--ink-08) 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;border-radius:4px}
+/* SKELETON */
+.sk-row{display:flex;align-items:center;gap:0.8rem;padding:0.8rem 1rem;border-bottom:1px solid var(--ink-08)}
+.sk{background:linear-gradient(90deg,var(--ink-08) 25%,rgba(26,25,22,0.08) 50%,var(--ink-08) 75%);background-size:200% 100%;animation:shimmer 1.3s infinite;border-radius:4px}
 @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
-.sk-row{display:flex;align-items:center;gap:0.85rem;padding:0.85rem 1.1rem;border-bottom:1px solid var(--ink-08)}
-.sk-circle{width:32px;height:32px;border-radius:50%;flex-shrink:0}
-.sk-lines{flex:1;display:flex;flex-direction:column;gap:0.4rem}
-.sk-line{height:10px;border-radius:4px}
-
-/* CONNECT BANNER */
-.connect-banner{background:var(--accent);border-radius:var(--r-lg);padding:1.25rem 1.5rem;margin-bottom:1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.connect-banner-text h3{font-family:var(--serif);font-weight:300;font-size:1.1rem;color:var(--cream);margin-bottom:0.2rem}
-.connect-banner-text p{font-size:0.78rem;color:rgba(245,242,236,0.7)}
-.connect-banner-btn{display:flex;align-items:center;gap:0.5rem;background:var(--cream);color:var(--accent);font-family:var(--sans);font-size:0.82rem;font-weight:600;padding:0.6rem 1.2rem;border-radius:100px;border:none;cursor:pointer;white-space:nowrap;flex-shrink:0}
+.sk-circ{width:30px;height:30px;border-radius:50%;flex-shrink:0}
+.sk-lines{flex:1;display:flex;flex-direction:column;gap:0.35rem}
+.sk-line{height:9px;border-radius:4px}
 
 /* DETAIL PANEL */
-.detail-overlay{position:fixed;inset:0;background:rgba(26,25,22,0.4);z-index:200;display:flex;justify-content:flex-end;opacity:0;pointer-events:none;transition:opacity 0.2s;backdrop-filter:blur(2px)}
+.detail-overlay{position:fixed;inset:0;background:rgba(26,25,22,0.38);z-index:200;opacity:0;pointer-events:none;transition:opacity 0.2s;backdrop-filter:blur(2px);display:flex;justify-content:flex-end}
 .detail-overlay.open{opacity:1;pointer-events:all}
-.detail-panel{width:420px;max-width:100%;background:#fff;height:100%;overflow-y:auto;transform:translateX(100%);transition:transform 0.25s;padding:1.5rem}
+.detail-panel{width:400px;max-width:90vw;background:#fff;height:100%;overflow-y:auto;transform:translateX(100%);transition:transform 0.24s;padding:1.5rem}
 .detail-overlay.open .detail-panel{transform:translateX(0)}
-.detail-close{width:28px;height:28px;border-radius:50%;border:1px solid var(--ink-20);background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;font-size:1rem;color:var(--ink-60)}
-.detail-company{font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-60);margin-bottom:0.35rem}
-.detail-role{font-family:var(--serif);font-weight:300;font-size:1.35rem;letter-spacing:-0.02em;margin-bottom:0.75rem}
-.detail-meta{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.25rem}
-.detail-body{font-size:0.82rem;color:var(--ink-60);line-height:1.7;white-space:pre-wrap;background:var(--cream);border-radius:var(--r);padding:1rem}
+.detail-close{width:26px;height:26px;border-radius:50%;border:1px solid var(--ink-20);background:none;cursor:pointer;font-size:0.95rem;color:var(--ink-60);display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem}
+.detail-co{font-size:0.68rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-60);margin-bottom:0.3rem}
+.detail-role{font-family:var(--serif);font-weight:300;font-size:1.25rem;letter-spacing:-0.02em;line-height:1.3;margin-bottom:0.75rem}
+.detail-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.1rem}
+.detail-body{font-size:0.8rem;color:var(--ink-60);line-height:1.75;background:var(--cream);border-radius:var(--r);padding:1rem}
 
-@media(max-width:768px){
+/* CONNECT BANNER */
+.connect-banner{background:var(--accent);border-radius:var(--r-lg);padding:1.1rem 1.4rem;margin-bottom:1.1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.connect-banner h3{font-family:var(--serif);font-weight:300;font-size:1rem;color:var(--cream);margin-bottom:0.15rem}
+.connect-banner p{font-size:0.74rem;color:rgba(245,242,236,0.65)}
+.connect-banner-btn{display:flex;align-items:center;gap:0.45rem;background:var(--cream);color:var(--accent);font-family:var(--sans);font-size:0.78rem;font-weight:600;padding:0.55rem 1.1rem;border-radius:100px;border:none;cursor:pointer;white-space:nowrap;flex-shrink:0}
+
+@media(max-width:720px){
 .sidebar{display:none}
 .main{margin-left:0}
 .stats-row{grid-template-columns:repeat(3,1fr)}
@@ -138,12 +134,11 @@ body{font-family:var(--sans);background:#F0EDE7;color:var(--ink);display:flex;fl
 </head>
 <body>
 
-<!-- TOP NAV -->
 <div class="topnav">
   <a href="/" class="topnav-logo">FreeJob<span>Tracker</span>.ai</a>
   <div class="topnav-right">
     <div class="user-pill">
-      <div class="user-avatar-placeholder" id="nav-avatar">?</div>
+      <div class="user-initial" id="nav-initial">?</div>
       <span class="user-name" id="nav-name">Loading...</span>
     </div>
     <button class="signout-btn" onclick="signOut()">Sign out</button>
@@ -151,247 +146,186 @@ body{font-family:var(--sans);background:#F0EDE7;color:var(--ink);display:flex;fl
 </div>
 
 <div class="app">
-
-  <!-- SIDEBAR -->
   <div class="sidebar">
-    <div class="sidebar-section">
-      <span class="sidebar-label">Pipeline</span>
-      <div class="sidebar-item active" onclick="filterEmails('all')">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
-        All applications
-        <span class="sidebar-count" id="count-all">0</span>
-      </div>
-      <div class="sidebar-item" onclick="filterEmails('applied')">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        Applied
-        <span class="sidebar-count" id="count-applied">0</span>
-      </div>
-      <div class="sidebar-item" onclick="filterEmails('screening')">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-        Screening
-        <span class="sidebar-count" id="count-screening">0</span>
-      </div>
-      <div class="sidebar-item" onclick="filterEmails('interview')">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-        Interview
-        <span class="sidebar-count" id="count-interview">0</span>
-      </div>
-      <div class="sidebar-item" onclick="filterEmails('offer')">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-        Offer
-        <span class="sidebar-count" id="count-offer">0</span>
-      </div>
-      <div class="sidebar-item" onclick="filterEmails('rejected')">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
-        Rejected
-        <span class="sidebar-count" id="count-rejected">0</span>
-      </div>
+    <span class="sb-label">Pipeline</span>
+    <div class="sb-item active" id="sb-all" onclick="filterBy('all',this)">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+      All applications <span class="sb-count" id="c-all">0</span>
     </div>
-    <div class="sidebar-section">
-      <span class="sidebar-label">Account</span>
-      <div class="sidebar-item" onclick="window.location.href='/contact.html'">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-        Help &amp; Support
-      </div>
-      <div class="sidebar-item" onclick="window.location.href='/privacy.html'">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Privacy Policy
-      </div>
+    <div class="sb-item" id="sb-applied" onclick="filterBy('applied',this)">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      Applied <span class="sb-count" id="c-applied">0</span>
+    </div>
+    <div class="sb-item" id="sb-screening" onclick="filterBy('screening',this)">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+      Screening <span class="sb-count" id="c-screening">0</span>
+    </div>
+    <div class="sb-item" id="sb-interview" onclick="filterBy('interview',this)">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      Interview <span class="sb-count" id="c-interview">0</span>
+    </div>
+    <div class="sb-item" id="sb-offer" onclick="filterBy('offer',this)">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+      Offer <span class="sb-count" id="c-offer">0</span>
+    </div>
+    <div class="sb-item" id="sb-rejected" onclick="filterBy('rejected',this)">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+      Rejected <span class="sb-count" id="c-rejected">0</span>
+    </div>
+    <span class="sb-label">Account</span>
+    <div class="sb-item" onclick="location.href='/contact.html'">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      Help &amp; Support
+    </div>
+    <div class="sb-item" onclick="location.href='/privacy.html'">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Privacy
     </div>
   </div>
 
-  <!-- MAIN -->
   <div class="main">
-
     <!-- STATS -->
     <div class="stats-row">
-      <div class="stat-card">
-        <div class="stat-label">Total</div>
-        <div class="stat-value" id="stat-total">—</div>
-        <div class="stat-sub">applications</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Applied</div>
-        <div class="stat-value" id="stat-applied" style="color:#0C447C">—</div>
-        <div class="stat-sub">awaiting response</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">In Progress</div>
-        <div class="stat-value" id="stat-inprogress" style="color:#4A2278">—</div>
-        <div class="stat-sub">screening + interview</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Offers</div>
-        <div class="stat-value" id="stat-offers" style="color:var(--accent)">—</div>
-        <div class="stat-sub">received</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Rejected</div>
-        <div class="stat-value" id="stat-rejected" style="color:#7A1A1A">—</div>
-        <div class="stat-sub">closed</div>
-      </div>
+      <div class="stat-card"><div class="stat-label">Total</div><div class="stat-val" id="s-total">—</div><div class="stat-sub">applications</div></div>
+      <div class="stat-card"><div class="stat-label">Applied</div><div class="stat-val" id="s-applied" style="color:#0C447C">—</div><div class="stat-sub">awaiting response</div></div>
+      <div class="stat-card"><div class="stat-label">In Progress</div><div class="stat-val" id="s-progress" style="color:#4A2278">—</div><div class="stat-sub">screening + interview</div></div>
+      <div class="stat-card"><div class="stat-label">Offers</div><div class="stat-val" id="s-offers" style="color:var(--accent)">—</div><div class="stat-sub">received</div></div>
+      <div class="stat-card"><div class="stat-label">Rejected</div><div class="stat-val" id="s-rejected" style="color:#7A1A1A">—</div><div class="stat-sub">closed</div></div>
     </div>
 
-    <!-- LIST -->
-    <div class="list-header">
-      <div>
-        <div class="list-title" id="list-title">All applications</div>
-        <div class="list-meta" id="list-meta">Loading your emails...</div>
+    <!-- TOOLBAR -->
+    <div class="toolbar">
+      <div class="toolbar-left">
+        <h2 id="list-title">All applications</h2>
+        <p id="list-meta">Loading your emails...</p>
       </div>
       <button class="refresh-btn" id="refresh-btn" onclick="loadEmails()">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
         Refresh
       </button>
     </div>
 
     <div class="email-list" id="email-list">
-      <!-- Skeleton loading -->
-      <div class="sk-row"><div class="sk-circle skeleton"></div><div class="sk-lines"><div class="sk-line skeleton" style="width:40%"></div><div class="sk-line skeleton" style="width:70%"></div><div class="sk-line skeleton" style="width:55%"></div></div></div>
-      <div class="sk-row"><div class="sk-circle skeleton"></div><div class="sk-lines"><div class="sk-line skeleton" style="width:35%"></div><div class="sk-line skeleton" style="width:65%"></div><div class="sk-line skeleton" style="width:50%"></div></div></div>
-      <div class="sk-row"><div class="sk-circle skeleton"></div><div class="sk-lines"><div class="sk-line skeleton" style="width:45%"></div><div class="sk-line skeleton" style="width:60%"></div><div class="sk-line skeleton" style="width:40%"></div></div></div>
+      <div class="sk-row"><div class="sk sk-circ"></div><div class="sk-lines"><div class="sk sk-line" style="width:38%"></div><div class="sk sk-line" style="width:68%"></div><div class="sk sk-line" style="width:52%"></div></div></div>
+      <div class="sk-row"><div class="sk sk-circ"></div><div class="sk-lines"><div class="sk sk-line" style="width:42%"></div><div class="sk sk-line" style="width:60%"></div><div class="sk sk-line" style="width:45%"></div></div></div>
+      <div class="sk-row"><div class="sk sk-circ"></div><div class="sk-lines"><div class="sk sk-line" style="width:35%"></div><div class="sk sk-line" style="width:72%"></div><div class="sk sk-line" style="width:58%"></div></div></div>
+      <div class="sk-row"><div class="sk sk-circ"></div><div class="sk-lines"><div class="sk sk-line" style="width:44%"></div><div class="sk sk-line" style="width:55%"></div><div class="sk sk-line" style="width:40%"></div></div></div>
     </div>
-
   </div>
 </div>
 
 <!-- DETAIL PANEL -->
 <div class="detail-overlay" id="detail-overlay" onclick="if(event.target===this)closeDetail()">
-  <div class="detail-panel" id="detail-panel">
+  <div class="detail-panel">
     <button class="detail-close" onclick="closeDetail()">×</button>
-    <div class="detail-company" id="detail-company"></div>
-    <div class="detail-role" id="detail-role"></div>
-    <div class="detail-meta" id="detail-meta"></div>
-    <div class="detail-body" id="detail-body"></div>
+    <div class="detail-co" id="d-company"></div>
+    <div class="detail-role" id="d-role"></div>
+    <div class="detail-tags" id="d-tags"></div>
+    <div class="detail-body" id="d-body"></div>
   </div>
 </div>
 
 <script>
-// ─── CONFIG ───
 const SUPABASE_URL = 'https://nyecnftwpreovgsxuxxd.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_7fMlZQ_PTvjXP9_GZWlKtw_PNdYnDI0';
 const { createClient } = supabase;
 const sb = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-let allEmails = [];
-let currentFilter = 'all';
-let currentSession = null;
+let allEmails = [], currentFilter = 'all', session = null;
 
-// ─── INIT ───
+// ── INIT ──
 async function init() {
-  const { data: { session } } = await sb.auth.getSession();
-  if (!session) { window.location.href = '/'; return; }
-  currentSession = session;
-  updateUserUI(session.user);
-  await loadEmails();
-}
+  const { data } = await sb.auth.getSession();
+  session = data.session;
 
-function updateUserUI(user) {
+  if (!session) { window.location.href = '/'; return; }
+
+  // Update user UI
+  const user = session.user;
   const name = user.user_metadata?.full_name?.split(' ')[0] || user.email.split('@')[0];
   const avatar = user.user_metadata?.avatar_url;
   document.getElementById('nav-name').textContent = name;
-  const avatarEl = document.getElementById('nav-avatar');
+  const initEl = document.getElementById('nav-initial');
   if (avatar) {
-    avatarEl.outerHTML = `<img src="${avatar}" class="user-avatar" id="nav-avatar" alt="${name}">`;
+    initEl.outerHTML = `<img src="${avatar}" class="user-avatar" id="nav-initial" alt="${name}">`;
   } else {
-    avatarEl.textContent = name[0].toUpperCase();
+    initEl.textContent = name[0].toUpperCase();
   }
+
+  await loadEmails();
 }
 
-// ─── LOAD EMAILS ───
+// ── LOAD EMAILS ──
 async function loadEmails() {
   const btn = document.getElementById('refresh-btn');
   btn.classList.add('spinning');
-  document.getElementById('list-meta').textContent = 'Fetching your emails...';
+  setMeta('Fetching your Gmail...');
+
+  // Show skeleton
+  document.getElementById('email-list').innerHTML = skeletonHTML();
+
+  // Try to get provider token — stored in session
+  let token = session?.provider_token;
+
+  // If no provider_token (common after page refresh), try to get fresh session
+  if (!token) {
+    const { data } = await sb.auth.getSession();
+    token = data?.session?.provider_token;
+    if (data?.session) session = data.session;
+  }
+
+  if (!token) {
+    showReconnect();
+    btn.classList.remove('spinning');
+    return;
+  }
 
   try {
-    const token = currentSession.provider_token;
+    const q = encodeURIComponent([
+      'newer_than:180d',
+      '(',
+      'subject:application OR subject:interview OR subject:offer OR',
+      'subject:screening OR subject:position OR subject:role OR',
+      'subject:recruiter OR subject:hiring OR subject:rejected OR',
+      'subject:"thank you for applying" OR subject:"application received" OR',
+      'subject:"we would like to" OR subject:"moving forward" OR subject:unfortunately',
+      ')'
+    ].join(' '));
 
-    if (!token) {
-      showNoToken();
-      btn.classList.remove('spinning');
-      return;
-    }
-
-    // Fetch emails from Gmail API — search for job-related emails
-    const query = encodeURIComponent('subject:(application OR interview OR offer OR screening OR position OR role OR job OR recruiter OR hiring OR rejected OR unfortunately) newer_than:90d');
-    const gmailRes = await fetch(
-      `https://gmail.googleapis.com/gmail/v1/users/me/messages?maxResults=50&q=${query}`,
-      { headers: { 'Authorization': `Bearer ${token}` } }
+    const res = await fetch(
+      `https://gmail.googleapis.com/gmail/v1/users/me/messages?maxResults=50&q=${q}`,
+      { headers: { Authorization: `Bearer ${token}` } }
     );
 
-    if (!gmailRes.ok) {
-      if (gmailRes.status === 401) { showNoToken(); return; }
-      throw new Error('Gmail API error: ' + gmailRes.status);
-    }
+    if (res.status === 401) { showReconnect(); btn.classList.remove('spinning'); return; }
+    if (!res.ok) throw new Error(`Gmail error ${res.status}`);
 
-    const gmailData = await gmailRes.json();
-    const messages = gmailData.messages || [];
+    const data = await res.json();
+    const msgs = data.messages || [];
 
-    if (messages.length === 0) {
-      showEmpty();
-      btn.classList.remove('spinning');
-      return;
-    }
+    if (!msgs.length) { showEmpty(); btn.classList.remove('spinning'); return; }
 
-    document.getElementById('list-meta').textContent = `Found ${messages.length} emails — classifying...`;
+    setMeta(`Found ${msgs.length} emails — classifying...`);
 
-    // Fetch details for each email (first 30)
-    const emailDetails = await Promise.all(
-      messages.slice(0, 30).map(msg =>
-        fetch(`https://gmail.googleapis.com/gmail/v1/users/me/messages/${msg.id}?format=metadata&metadataHeaders=From&metadataHeaders=Subject&metadataHeaders=Date`,
-          { headers: { 'Authorization': `Bearer ${token}` } }
-        ).then(r => r.json())
-      )
-    );
+    // Fetch metadata for each message in parallel (batches of 10)
+    const details = await batchFetch(msgs.slice(0, 40), token);
 
-    // Parse email metadata
-    allEmails = emailDetails.map(msg => {
-      const headers = msg.payload?.headers || [];
-      const get = (name) => headers.find(h => h.name === name)?.value || '';
-      const from = get('From');
-      const subject = get('Subject');
-      const date = get('Date');
-      const snippet = msg.snippet || '';
+    allEmails = details
+      .map(parseEmail)
+      .filter(e => e && e.status !== 'skip')
+      .sort((a, b) => b.ts - a.ts);
 
-      // Extract sender name and email
-      const fromMatch = from.match(/^(.+?)\s*<(.+?)>$/) || [null, from, from];
-      const senderName = (fromMatch[1] || from).replace(/"/g, '').trim();
-      const senderEmail = fromMatch[2] || from;
-      const company = extractCompany(senderName, senderEmail);
-      const initial = company ? company[0].toUpperCase() : '?';
-      const color = getColor(company);
-      const status = classifyEmail(subject, snippet, from);
-      const dateFormatted = formatDate(date);
+    updateCounts();
+    renderList(allEmails);
+    setMeta(`${allEmails.length} job-related emails · Last synced just now`);
 
-      return {
-        id: msg.id,
-        company,
-        senderName,
-        senderEmail,
-        subject,
-        snippet,
-        date: dateFormatted,
-        rawDate: new Date(date),
-        status,
-        initial,
-        color
-      };
-    }).filter(e => e.status !== 'skip');
-
-    // Sort by date descending
-    allEmails.sort((a, b) => b.rawDate - a.rawDate);
-
-    updateStats();
-    renderEmails(allEmails);
-    document.getElementById('list-meta').textContent = `${allEmails.length} job-related emails found`;
-
-  } catch(err) {
-    console.error(err);
+  } catch(e) {
+    console.error(e);
     document.getElementById('email-list').innerHTML = `
       <div class="state-box">
-        <div class="state-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B6B45" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div class="state-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B6B45" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="13"/><circle cx="12" cy="16" r="0.5" fill="#1B6B45"/></svg></div>
         <div class="state-title">Something went wrong</div>
-        <div class="state-desc">${err.message}. Please try refreshing.</div>
+        <div class="state-desc">${e.message}</div>
         <button class="state-btn" onclick="loadEmails()">Try again</button>
       </div>`;
   }
@@ -399,88 +333,106 @@ async function loadEmails() {
   btn.classList.remove('spinning');
 }
 
-// ─── CLASSIFY EMAILS ───
-function classifyEmail(subject, snippet, from) {
-  const text = (subject + ' ' + snippet + ' ' + from).toLowerCase();
+async function batchFetch(msgs, token) {
+  const BATCH = 10;
+  const results = [];
+  for (let i = 0; i < msgs.length; i += BATCH) {
+    const batch = msgs.slice(i, i + BATCH);
+    const fetched = await Promise.all(batch.map(m =>
+      fetch(`https://gmail.googleapis.com/gmail/v1/users/me/messages/${m.id}?format=metadata&metadataHeaders=From&metadataHeaders=Subject&metadataHeaders=Date`,
+        { headers: { Authorization: `Bearer ${token}` } }
+      ).then(r => r.ok ? r.json() : null)
+    ));
+    results.push(...fetched.filter(Boolean));
+  }
+  return results;
+}
 
-  // Skip non-job emails
-  const skipWords = ['newsletter', 'unsubscribe', 'receipt', 'order', 'delivery', 'payment', 'invoice', 'bank', 'amazon order'];
-  if (skipWords.some(w => text.includes(w))) return 'skip';
+function parseEmail(msg) {
+  try {
+    const h = msg.payload?.headers || [];
+    const get = n => h.find(x => x.name === n)?.value || '';
+    const from    = get('From');
+    const subject = get('Subject');
+    const date    = get('Date');
+    const snippet = msg.snippet || '';
+    const ts      = new Date(date).getTime() || 0;
 
-  // Offer
-  if (/offer letter|pleased to offer|we.d like to offer|formal offer|compensation package|joining date|start date|congratulations.*offer|offer of employment/.test(text)) return 'offer';
+    const fromMatch = from.match(/^"?(.+?)"?\s*<(.+?)>$/) || [null, from, from];
+    const senderName  = (fromMatch[1] || '').replace(/"/g,'').trim() || from;
+    const senderEmail = (fromMatch[2] || from).trim();
+    const company     = extractCompany(senderName, senderEmail);
+    const status      = classify(subject, snippet, from);
+    const color       = avatarColor(company);
 
-  // Interview
-  if (/interview.*schedule|schedule.*interview|interview.*confirm|panel interview|technical.*interview|hiring manager|interview.*invite|zoom.*interview|meet.*interview|interview.*loop|case.*interview|interview.*round/.test(text)) return 'interview';
+    return { id: msg.id, company, senderName, senderEmail, subject, snippet, ts, date: fmtDate(ts), status, color };
+  } catch { return null; }
+}
 
-  // Screening
-  if (/screening call|phone screen|introductory call|recruiter.*call|initial.*call|quick.*call|chat.*opportunity|reach out.*opportunity|interested.*background|talent.*reach/.test(text)) return 'screening';
-
-  // Rejected
-  if (/not.*moving forward|decided.*not|unfortunately|not.*selected|other candidates|not.*progress|position.*filled|pursue.*other|regret.*inform|not.*right fit|won.t.*moving/.test(text)) return 'rejected';
-
-  // Applied
-  if (/application.*received|received.*application|thank.*applying|application.*submitted|successfully applied|applied.*position|we.*received.*application|application.*under review|reviewing.*application/.test(text)) return 'applied';
-
-  // Generic job signal
-  if (/job|position|role|hiring|recruiter|career|opportunity/.test(text)) return 'applied';
-
+function classify(subj, snip, from) {
+  const t = (subj + ' ' + snip + ' ' + from).toLowerCase();
+  const skip = ['newsletter','unsubscribe','receipt','order confirmed','payment','invoice','shipment','delivery'];
+  if (skip.some(w => t.includes(w))) return 'skip';
+  if (/offer letter|pleased to offer|formal offer|compensation package|joining date|start date|congratulations.*offer|offer of employment|we.d like to offer/.test(t)) return 'offer';
+  if (/interview.*schedul|schedul.*interview|interview.*confirm|panel interview|technical.*interview|hiring manager|interview.*invite|interview.*round|case.*interview/.test(t)) return 'interview';
+  if (/screening call|phone screen|introductory call|recruiter.*call|initial.*call|quick.*call|we.d love to connect|reach out.*opportunit|interested in your background|talent.*reach/.test(t)) return 'screening';
+  if (/not moving forward|decided not to|unfortunately|not.*selected|other candidates|not.*progress|position.*filled|pursue other|regret to inform|not the right fit|won.t be moving|after careful consideration/.test(t)) return 'rejected';
+  if (/application.*received|received.*application|thank.*applying|application.*submitted|successfully applied|application.*under review|reviewing.*application|we received your/.test(t)) return 'applied';
+  if (/job|position|role|hiring|recruiter|career|opportunit/.test(t)) return 'applied';
   return 'skip';
 }
 
-// ─── HELPERS ───
-function extractCompany(senderName, senderEmail) {
-  if (senderName && !senderName.includes('@')) {
-    const clean = senderName.replace(/\b(noreply|no-reply|careers|talent|recruiting|hr|jobs|team|notifications?|alerts?)\b/gi, '').trim();
-    if (clean.length > 1) return clean;
-  }
-  const domain = senderEmail.split('@')[1] || '';
-  return domain.split('.')[0].charAt(0).toUpperCase() + domain.split('.')[0].slice(1);
+function extractCompany(name, email) {
+  const cleaned = name.replace(/\b(noreply|no-reply|careers|talent|recruiting|hr|jobs|team|notifications?|alerts?|do not reply|donotreply)\b/gi,'').trim();
+  if (cleaned.length > 1 && !cleaned.includes('@')) return cleaned;
+  const domain = email.split('@')[1] || '';
+  const part = domain.split('.')[0];
+  return part.charAt(0).toUpperCase() + part.slice(1);
 }
 
-const palette = ['#E8F5E9','#EDE7F6','#FFF8E1','#EBF1FA','#FBE9E9','#E8F3EE','#FFF3E0','#E3F2FD'];
-const textPalette = ['#2E7D32','#512DA8','#F57F17','#0C447C','#7A1A1A','#1B6B45','#E65100','#0277BD'];
-function getColor(company) {
-  const idx = (company?.charCodeAt(0) || 0) % palette.length;
-  return { bg: palette[idx], text: textPalette[idx] };
+const BG  = ['#E8F5E9','#EDE7F6','#FFF8E1','#EBF1FA','#FBE9E9','#E8F3EE','#FFF3E0','#E3F2FD','#FCE4EC','#F3E5F5'];
+const TXT = ['#2E7D32','#512DA8','#F57F17','#0C447C','#7A1A1A','#1B6B45','#E65100','#0277BD','#880E4F','#4A148C'];
+function avatarColor(s) {
+  const i = (s?.charCodeAt(0)||0) % BG.length;
+  return { bg: BG[i], text: TXT[i] };
 }
 
-function formatDate(dateStr) {
-  if (!dateStr) return '';
-  const d = new Date(dateStr);
-  const now = new Date();
+function fmtDate(ts) {
+  if (!ts) return '';
+  const d = new Date(ts), now = new Date();
   const diff = Math.floor((now - d) / 86400000);
   if (diff === 0) return 'Today';
   if (diff === 1) return 'Yesterday';
-  if (diff < 7) return d.toLocaleDateString('en', {weekday:'short'});
-  return d.toLocaleDateString('en', {day:'numeric', month:'short'});
+  if (diff < 7) return d.toLocaleDateString('en',{weekday:'short'});
+  return d.toLocaleDateString('en',{day:'numeric',month:'short'});
 }
 
-const tagMap = {
-  applied:   {cls:'tag-applied',   label:'Applied'},
-  screening: {cls:'tag-screening', label:'Screening'},
-  interview: {cls:'tag-interview', label:'Interview'},
-  rejected:  {cls:'tag-rejected',  label:'Rejected'},
-  offer:     {cls:'tag-offer',     label:'Offer'},
+const TAG_MAP = {
+  applied:   { cls:'tag-applied',   label:'Applied'   },
+  screening: { cls:'tag-screening', label:'Screening' },
+  interview: { cls:'tag-interview', label:'Interview' },
+  rejected:  { cls:'tag-rejected',  label:'Rejected'  },
+  offer:     { cls:'tag-offer',     label:'Offer'     },
 };
 
-// ─── RENDER ───
-function renderEmails(emails) {
+// ── RENDER ──
+let visibleEmails = [];
+function renderList(emails) {
+  visibleEmails = emails;
   const list = document.getElementById('email-list');
   if (!emails.length) { showEmpty(); return; }
-
-  list.innerHTML = emails.map((e, i) => {
-    const tag = tagMap[e.status] || {cls:'tag-processing', label:'Processing'};
-    return `
-    <div class="email-row" onclick="openDetail(${i})">
-      <div class="email-avatar" style="background:${e.color.bg};color:${e.color.text}">${e.initial}</div>
+  list.innerHTML = emails.map((e,i) => {
+    const tag = TAG_MAP[e.status] || {cls:'',label:e.status};
+    const init = (e.company||'?')[0].toUpperCase();
+    return `<div class="email-row" onclick="openDetail(${i})">
+      <div class="email-av" style="background:${e.color.bg};color:${e.color.text}">${init}</div>
       <div class="email-body">
         <div class="email-from">${esc(e.company)} — ${esc(e.senderEmail)}</div>
-        <div class="email-subject">${esc(e.subject)}</div>
-        <div class="email-preview">${esc(e.snippet)}</div>
+        <div class="email-subj">${esc(e.subject)}</div>
+        <div class="email-snip">${esc(e.snippet)}</div>
       </div>
       <div class="email-meta">
-        <span class="email-time">${e.date}</span>
+        <span class="email-date">${e.date}</span>
         <span class="tag ${tag.cls}">${tag.label}</span>
         <span class="ai-badge">AI</span>
       </div>
@@ -488,78 +440,67 @@ function renderEmails(emails) {
   }).join('');
 }
 
-function updateStats() {
-  const counts = {all:0, applied:0, screening:0, interview:0, offer:0, rejected:0};
-  allEmails.forEach(e => { counts.all++; if(counts[e.status]!==undefined) counts[e.status]++; });
-  Object.keys(counts).forEach(k => {
-    const el = document.getElementById('count-'+k);
-    if(el) el.textContent = counts[k];
-  });
-  document.getElementById('stat-total').textContent = counts.all;
-  document.getElementById('stat-applied').textContent = counts.applied;
-  document.getElementById('stat-inprogress').textContent = counts.screening + counts.interview;
-  document.getElementById('stat-offers').textContent = counts.offer;
-  document.getElementById('stat-rejected').textContent = counts.rejected;
+function updateCounts() {
+  const c = {all:0,applied:0,screening:0,interview:0,offer:0,rejected:0};
+  allEmails.forEach(e => { c.all++; if(c[e.status]!==undefined) c[e.status]++; });
+  Object.keys(c).forEach(k => { const el=document.getElementById('c-'+k); if(el) el.textContent=c[k]; });
+  document.getElementById('s-total').textContent   = c.all;
+  document.getElementById('s-applied').textContent = c.applied;
+  document.getElementById('s-progress').textContent= c.screening + c.interview;
+  document.getElementById('s-offers').textContent  = c.offer;
+  document.getElementById('s-rejected').textContent= c.rejected;
 }
 
-function filterEmails(filter) {
+function filterBy(filter, el) {
   currentFilter = filter;
-  document.querySelectorAll('.sidebar-item').forEach(el => el.classList.remove('active'));
-  event.currentTarget.classList.add('active');
-  const titles = {all:'All applications', applied:'Applied', screening:'Screening', interview:'Interview', offer:'Offers', rejected:'Rejected'};
-  document.getElementById('list-title').textContent = titles[filter] || 'All applications';
-  const filtered = filter === 'all' ? allEmails : allEmails.filter(e => e.status === filter);
-  document.getElementById('list-meta').textContent = `${filtered.length} emails`;
-  renderEmails(filtered);
+  document.querySelectorAll('.sb-item').forEach(x => x.classList.remove('active'));
+  el.classList.add('active');
+  const titles = {all:'All applications',applied:'Applied',screening:'Screening',interview:'Interview',offer:'Offers',rejected:'Rejected'};
+  document.getElementById('list-title').textContent = titles[filter]||'All';
+  const filtered = filter==='all' ? allEmails : allEmails.filter(e=>e.status===filter);
+  setMeta(`${filtered.length} emails`);
+  renderList(filtered);
 }
 
-// ─── DETAIL PANEL ───
-let filteredForDetail = [];
-function openDetail(idx) {
-  const filter = currentFilter;
-  filteredForDetail = filter === 'all' ? allEmails : allEmails.filter(e => e.status === filter);
-  const e = filteredForDetail[idx];
-  if (!e) return;
-  const tag = tagMap[e.status] || {cls:'tag-processing', label:'Processing'};
-  document.getElementById('detail-company').textContent = e.company;
-  document.getElementById('detail-role').textContent = e.subject;
-  document.getElementById('detail-meta').innerHTML = `
+// ── DETAIL PANEL ──
+function openDetail(i) {
+  const e = visibleEmails[i]; if(!e) return;
+  const tag = TAG_MAP[e.status]||{cls:'',label:e.status};
+  document.getElementById('d-company').textContent = e.company;
+  document.getElementById('d-role').textContent    = e.subject;
+  document.getElementById('d-tags').innerHTML = `
     <span class="tag ${tag.cls}">${tag.label}</span>
     <span class="tag" style="background:var(--ink-08);color:var(--ink-60)">${e.date}</span>
-    <span class="tag" style="background:var(--ink-08);color:var(--ink-60)">${e.senderEmail}</span>
-  `;
-  document.getElementById('detail-body').textContent = e.snippet;
+    <span class="tag" style="background:var(--ink-08);color:var(--ink-60);max-width:180px;overflow:hidden;text-overflow:ellipsis">${esc(e.senderEmail)}</span>`;
+  document.getElementById('d-body').textContent = e.snippet;
   document.getElementById('detail-overlay').classList.add('open');
 }
 function closeDetail() { document.getElementById('detail-overlay').classList.remove('open'); }
 
-// ─── EMPTY / ERROR STATES ───
+// ── STATES ──
 function showEmpty() {
   document.getElementById('email-list').innerHTML = `
     <div class="state-box">
-      <div class="state-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B6B45" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg></div>
+      <div class="state-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B6B45" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg></div>
       <div class="state-title">No job emails found</div>
-      <div class="state-desc">We scanned your last 90 days of Gmail but didn't find any job-related emails. Apply to some roles and check back!</div>
+      <div class="state-desc">We scanned your last 6 months of Gmail but couldn't find job-related emails. Apply to some roles and check back!</div>
     </div>`;
-  document.getElementById('list-meta').textContent = '0 emails found';
-  ['total','applied','inprogress','offers','rejected'].forEach(k => document.getElementById('stat-'+k).textContent = '0');
+  setMeta('0 emails found');
+  ['s-total','s-applied','s-progress','s-offers','s-rejected'].forEach(id => document.getElementById(id).textContent='0');
 }
 
-function showNoToken() {
+function showReconnect() {
   document.getElementById('email-list').innerHTML = `
     <div class="state-box">
-      <div class="state-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B6B45" stroke-width="2"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 11-7.778 7.778 5.5 5.5 0 017.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg></div>
+      <div class="state-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B6B45" stroke-width="2"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 11-7.778 7.778 5.5 5.5 0 017.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg></div>
       <div class="state-title">Gmail access needed</div>
-      <div class="state-desc">We need permission to read your Gmail to classify your job applications. Please reconnect your account.</div>
-      <button class="state-btn" onclick="reconnectGmail()">
-        <svg width="14" height="14" viewBox="0 0 48 48"><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h12.4c-.5 2.8-2.1 5.2-4.5 6.8v5.6h7.3c4.3-4 6.9-9.8 6.9-16.4z"/><path fill="#34A853" d="M24 47c6.5 0 11.9-2.1 15.9-5.8l-7.3-5.6c-2.2 1.5-5 2.3-8.6 2.3-6.6 0-12.2-4.5-14.2-10.5H2.3v5.8C6.2 42.4 14.5 47 24 47z"/><path fill="#FBBC04" d="M9.8 27.4c-.5-1.5-.8-3.1-.8-4.8 0-1.7.3-3.3.8-4.8v-5.8H2.3C.8 15.3 0 19.6 0 24c0 4.4.8 8.6 2.3 12l7.5-5.8-.8-2.8z" transform="translate(2.3)"/><path fill="#EA4335" d="M24 9.5c3.7 0 7 1.3 9.6 3.8l7.2-7.2C36.9 2.1 30.9 0 24 0 14.5 0 6.2 4.6 2.3 11.8l7.5 5.8C11.8 14 17.4 9.5 24 9.5z"/></svg>
-        Reconnect Gmail
-      </button>
+      <div class="state-desc">Your Gmail session has expired. Please sign in again to reconnect your inbox.</div>
+      <button class="state-btn" onclick="reconnect()">Reconnect Gmail</button>
     </div>`;
-  document.getElementById('list-meta').textContent = 'Gmail access required';
+  setMeta('Sign in required');
 }
 
-async function reconnectGmail() {
+async function reconnect() {
   await sb.auth.signInWithOAuth({
     provider: 'google',
     options: {
@@ -575,8 +516,22 @@ async function signOut() {
   window.location.href = '/';
 }
 
-function esc(str) {
-  return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+function setMeta(txt) { document.getElementById('list-meta').textContent = txt; }
+
+function skeletonHTML() {
+  return [1,2,3,4].map(()=>`
+    <div class="sk-row">
+      <div class="sk sk-circ"></div>
+      <div class="sk-lines">
+        <div class="sk sk-line" style="width:${35+Math.random()*20|0}%"></div>
+        <div class="sk sk-line" style="width:${50+Math.random()*25|0}%"></div>
+        <div class="sk sk-line" style="width:${30+Math.random()*20|0}%"></div>
+      </div>
+    </div>`).join('');
+}
+
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
 init();
