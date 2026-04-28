@@ -163,6 +163,7 @@ nav{padding:0 1.25rem}
 
     <h3 class="sub-heading">Google API</h3>
     <p>Our use of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>, including the <a href="https://developers.google.com/terms/api-services-user-data-policy#limited-use" target="_blank" rel="noopener">Limited Use requirements</a>.</p>
+    <p>We access Gmail data solely to provide the job tracking service. We do not use Gmail data for advertising, to build user profiles beyond the job tracking purpose, or for any purpose not disclosed in this Privacy Notice.</p>
   </div>
 
   <!-- S2 -->
@@ -174,7 +175,7 @@ nav{padding:0 1.25rem}
       <li><strong>To facilitate account creation and authentication.</strong> We may process your information so you can create and log in to your account.</li>
       <li><strong>To send administrative information to you.</strong> We may process your information to send you details about our products and services, changes to our terms and policies.</li>
       <li><strong>To save or protect an individual's vital interest.</strong> We may process your information when necessary to prevent harm.</li>
-      <li><strong>Email classification.</strong> Email content is accessed temporarily via read-only Gmail OAuth for the sole purpose of classifying job-related emails. Content is processed in real-time and is never stored, retained, or logged on our servers.</li>
+      <li><strong>Two-stage email classification.</strong> We use a two-stage process to classify your emails. In Stage 1, we analyse only the email subject line, sender name, and snippet preview to determine whether an email is job-related. In Stage 2, for emails confirmed as job-related in Stage 1, we read the full email body and send it to our AI provider (Anthropic) solely to classify it into one of five categories: Applied, Screening, Interview, Rejected, or Offer. After classification, all email content — including subject, snippet, and body — is immediately discarded from memory. It is never written to a database, never logged to a file, and never retained beyond the real-time classification process. We store only the extracted metadata: company name, job title, classification status, and date.</li>
     </ul>
   </div>
 
@@ -195,11 +196,12 @@ nav{padding:0 1.25rem}
     <h2 class="section-heading">4. When and with whom do we share your personal information?</h2>
     <p>We may share information in specific situations and with the following third parties:</p>
     <ul>
+      <li><strong>Anthropic (AI Classification Provider).</strong> For the purpose of classifying job-related emails, we transmit email subject lines, sender names, snippets, and — for confirmed job-related emails only — full email body content to Anthropic's Claude API. This data is transmitted solely to return a classification label. Anthropic does not retain, store, or train on this data under our data processing arrangement. Anthropic's privacy policy is available at <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">anthropic.com/privacy</a>.</li>
+      <li><strong>Supabase (Database Provider).</strong> We store user account information and classified job metadata (company name, job title, status, date) in Supabase's secure PostgreSQL database. Email content is never stored in our database.</li>
+      <li><strong>Google (Authentication &amp; Gmail API).</strong> We use Google OAuth for authentication and the Gmail API to access your inbox with read-only permission. Google's privacy policy governs their data handling.</li>
       <li><strong>Business Transfers.</strong> We may share or transfer your information in connection with any merger, sale of company assets, financing, or acquisition of all or a portion of our business.</li>
-      <li><strong>Affiliates.</strong> We may share your information with our affiliates, who are required to honour this Privacy Notice.</li>
-      <li><strong>Business Partners.</strong> We may share your information with our business partners to offer you certain products, services, or promotions.</li>
     </ul>
-    <p>We have not disclosed, sold, or shared any personal information to third parties for a business or commercial purpose in the preceding twelve (12) months. We will not sell or share personal information in the future belonging to website visitors, users, and other consumers.</p>
+    <p>We do not sell, share, or disclose your personal information to any other third parties for advertising, marketing, or commercial purposes. We have not sold personal information to any third party in the preceding twelve (12) months.</p>
   </div>
 
   <!-- S5 -->
@@ -220,9 +222,39 @@ nav{padding:0 1.25rem}
   <!-- S7 -->
   <div class="policy-section" id="s7">
     <h2 class="section-heading">7. Do we offer artificial intelligence-based products?</h2>
-    <p>Yes. As part of our Services, we offer products powered by artificial intelligence and natural language processing to automatically classify job-related emails into categories (Applied, Screening, Interview, Rejected, Offer).</p>
-    <p>We provide the AI Products through third-party service providers. Your input and personal information will be shared with and processed by these providers only for the purposes outlined in this Privacy Notice. You must not use the AI Products in any way that violates the terms or policies of any AI Service Provider.</p>
-    <p>To opt out, you can log in to your account settings and disconnect your inbox connection at any time.</p>
+    <p>Yes. FreeJobTracker.ai uses artificial intelligence to automatically classify job-related emails into five categories: Applied, Screening, Interview, Rejected, and Offer.</p>
+
+    <h3 class="sub-heading">Two-stage classification process</h3>
+    <p>We use a two-stage approach specifically designed to minimise the amount of email content accessed:</p>
+    <ul>
+      <li><strong>Stage 1 — Job detection.</strong> We analyse only the email subject line, sender name, and snippet preview to determine whether an email is job-related. For the vast majority of emails — newsletters, personal messages, receipts — the process stops here and full content is never accessed.</li>
+      <li><strong>Stage 2 — Category classification.</strong> Only emails confirmed as job-related in Stage 1 proceed to this stage. We read the full email body and send it to Anthropic's Claude API to classify it into one of the five categories above. Once the classification label is returned, all email content is immediately discarded from memory.</li>
+    </ul>
+
+    <h3 class="sub-heading">What data is sent to our AI provider</h3>
+    <p>For Stage 2 classification, we transmit the following to Anthropic's Claude API:</p>
+    <ul>
+      <li>Email subject line</li>
+      <li>Sender name and email address</li>
+      <li>Full email body (for confirmed job-related emails only)</li>
+    </ul>
+    <p>We do not transmit your name, Google account details, or any information beyond the email content itself.</p>
+
+    <h3 class="sub-heading">Data retention by our AI provider</h3>
+    <p>Anthropic processes email content solely to return a classification label. Under our usage of their API, Anthropic does not retain or train on this data beyond the scope of completing the API request. Please review <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">Anthropic's Privacy Policy</a> for full details of their data handling practices.</p>
+
+    <h3 class="sub-heading">What we store after classification</h3>
+    <p>After classification, we store only the following in our database:</p>
+    <ul>
+      <li>Company name (extracted from sender)</li>
+      <li>Job title (extracted from subject line)</li>
+      <li>Classification status (Applied, Screening, Interview, Rejected, or Offer)</li>
+      <li>Date of the email</li>
+    </ul>
+    <p>Email body content, subject lines, and snippets are never written to our database. They exist only transiently in memory during the classification process.</p>
+
+    <h3 class="sub-heading">How to opt out</h3>
+    <p>You can disconnect your Gmail inbox at any time from your account settings or by visiting <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a> and removing FreeJobTracker.ai. All stored metadata will be deleted within 24 hours of disconnection.</p>
   </div>
 
   <!-- S8 -->
