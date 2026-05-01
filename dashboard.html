@@ -15,7 +15,7 @@
 --accent:#1B6B45;--accent-light:#E8F3EE;--warn:#D4521A;--warn-light:#FBF0EB;
 --blue:#1B4F8A;--blue-light:#EBF1FA;
 --serif:'Fraunces',Georgia,serif;--sans:'DM Sans',sans-serif;
---r:10px;--r-lg:16px;--sidebar:220px;
+--r:10px;--r-lg:14px;--sidebar:220px;
 }
 html,body{height:100%;margin:0}
 body{font-family:var(--sans);background:#EDEAE4;color:var(--ink);min-height:100vh}
@@ -29,8 +29,11 @@ body{font-family:var(--sans);background:#EDEAE4;color:var(--ink);min-height:100v
 .user-avatar{width:24px;height:24px;border-radius:50%;object-fit:cover}
 .user-initial{width:24px;height:24px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:0.68rem;font-weight:600;color:var(--accent);flex-shrink:0}
 .user-name{font-size:0.78rem;font-weight:500;color:var(--ink)}
-.signout-btn{font-size:0.72rem;color:var(--ink-60);background:none;border:none;cursor:pointer;padding:0.3rem 0.5rem;border-radius:6px;transition:background 0.15s,color 0.15s}
+.signout-btn{font-size:0.72rem;color:var(--ink-60);background:none;border:none;cursor:pointer;padding:0.3rem 0.5rem;border-radius:6px;transition:background 0.15s}
 .signout-btn:hover{background:var(--warn-light);color:var(--warn)}
+.view-toggle{display:flex;align-items:center;background:#fff;border:1px solid var(--ink-20);border-radius:8px;overflow:hidden}
+.view-btn{padding:0.3rem 0.65rem;font-size:0.72rem;font-weight:500;color:var(--ink-60);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:0.3rem;transition:all 0.15s}
+.view-btn.active{background:var(--ink);color:var(--cream)}
 
 /* LAYOUT */
 .app{display:flex;padding-top:54px;min-height:calc(100vh - 54px)}
@@ -46,40 +49,71 @@ body{font-family:var(--sans);background:#EDEAE4;color:var(--ink);min-height:100v
 .sb-item.active .sb-count{background:rgba(27,107,69,0.15);color:var(--accent)}
 
 /* MAIN */
-.main{margin-left:var(--sidebar);flex:1;padding:1.25rem;min-height:calc(100vh - 54px)}
+.main{margin-left:var(--sidebar);flex:1;padding:1.25rem;min-height:calc(100vh - 54px);overflow-x:auto}
 
 /* PRIVACY NOTICE */
-.privacy-notice{background:var(--ink);border-radius:var(--r-lg);padding:0.9rem 1.1rem;margin-bottom:1.1rem;display:flex;align-items:flex-start;gap:0.75rem}
-.privacy-notice-text{font-size:0.76rem;color:rgba(245,242,236,0.7);line-height:1.55}
+.privacy-notice{background:var(--ink);border-radius:var(--r-lg);padding:0.75rem 1rem;margin-bottom:1rem;display:flex;align-items:flex-start;gap:0.65rem}
+.privacy-notice-text{font-size:0.72rem;color:rgba(245,242,236,0.7);line-height:1.5}
 .privacy-notice-text strong{color:var(--cream)}
 
 /* STATS */
-.stats-row{display:grid;grid-template-columns:repeat(5,1fr);gap:0.65rem;margin-bottom:1.1rem}
-.stat-card{background:#fff;border:1px solid var(--ink-20);border-radius:var(--r-lg);padding:0.9rem 1rem}
-.stat-label{font-size:0.64rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-60);margin-bottom:0.3rem}
-.stat-val{font-family:var(--serif);font-size:1.85rem;font-weight:300;line-height:1;letter-spacing:-0.03em}
-.stat-sub{font-size:0.66rem;color:var(--ink-60);margin-top:0.2rem}
+.stats-row{display:grid;grid-template-columns:repeat(5,1fr);gap:0.65rem;margin-bottom:1rem}
+.stat-card{background:#fff;border:1px solid var(--ink-20);border-radius:var(--r-lg);padding:0.85rem 1rem}
+.stat-label{font-size:0.62rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-60);margin-bottom:0.25rem}
+.stat-val{font-family:var(--serif);font-size:1.75rem;font-weight:300;line-height:1;letter-spacing:-0.03em}
+.stat-sub{font-size:0.62rem;color:var(--ink-60);margin-top:0.15rem}
 
-/* PROGRESS BAR */
-.progress-card{background:#fff;border:1px solid var(--ink-20);border-radius:var(--r-lg);padding:0.9rem 1.1rem;margin-bottom:1.1rem}
-.progress-label{font-size:0.7rem;font-weight:500;color:var(--ink-60);margin-bottom:0.6rem;display:flex;justify-content:space-between}
-.progress-bar{height:6px;background:var(--ink-08);border-radius:100px;overflow:hidden;display:flex;gap:2px}
-.progress-seg{height:100%;border-radius:100px;transition:width 0.5s ease}
+/* TAT CARDS */
+.tat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0.65rem;margin-bottom:1rem}
+.tat-card{background:#fff;border:1px solid var(--ink-20);border-radius:var(--r-lg);padding:0.75rem 1rem}
+.tat-label{font-size:0.62rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-60);margin-bottom:0.2rem}
+.tat-val{font-family:var(--serif);font-size:1.4rem;font-weight:300;line-height:1;letter-spacing:-0.02em}
+.tat-sub{font-size:0.6rem;color:var(--ink-60);margin-top:0.15rem}
 
 /* TOOLBAR */
 .toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.85rem}
-.toolbar-left h2{font-family:var(--serif);font-weight:300;font-size:1.15rem;letter-spacing:-0.02em}
-.toolbar-left p{font-size:0.72rem;color:var(--ink-60);margin-top:0.1rem}
-.toolbar-right{display:flex;align-items:center;gap:0.6rem}
-.refresh-btn{display:flex;align-items:center;gap:0.4rem;font-size:0.75rem;font-weight:500;color:var(--accent);background:var(--accent-light);border:none;border-radius:100px;padding:0.4rem 0.9rem;cursor:pointer;transition:opacity 0.15s}
+.toolbar-left h2{font-family:var(--serif);font-weight:300;font-size:1.1rem;letter-spacing:-0.02em}
+.toolbar-left p{font-size:0.7rem;color:var(--ink-60);margin-top:0.1rem}
+.refresh-btn{display:flex;align-items:center;gap:0.4rem;font-size:0.72rem;font-weight:500;color:var(--accent);background:var(--accent-light);border:none;border-radius:100px;padding:0.38rem 0.85rem;cursor:pointer;transition:opacity 0.15s}
 .refresh-btn:hover{opacity:0.8}
 .refresh-btn.spinning svg{animation:spin 1s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* STAGE BADGE */
-.stage-badge{display:inline-flex;align-items:center;gap:0.3rem;font-size:0.62rem;font-weight:500;padding:0.18rem 0.5rem;border-radius:100px;background:#F0F4FF;color:#3B5BDB;border:1px solid rgba(59,91,219,0.15)}
+/* ── KANBAN VIEW ── */
+.kanban-board{display:grid;grid-template-columns:repeat(5,minmax(200px,1fr));gap:0.75rem;align-items:start}
+.kanban-col{background:#fff;border:1px solid var(--ink-20);border-radius:var(--r-lg);overflow:hidden;min-height:200px}
+.kanban-col-header{padding:0.75rem 1rem;border-bottom:1px solid var(--ink-08);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:#fff;z-index:1}
+.kanban-col-title{font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase}
+.kanban-col-count{font-size:0.65rem;font-weight:500;background:var(--ink-08);color:var(--ink-60);padding:0.1rem 0.45rem;border-radius:100px}
+.kanban-cards{padding:0.6rem;display:flex;flex-direction:column;gap:0.5rem}
+.kanban-card{background:var(--cream);border:1px solid var(--ink-20);border-radius:10px;padding:0.75rem;cursor:pointer;transition:all 0.15s;position:relative}
+.kanban-card:hover{border-color:rgba(26,25,22,0.25);box-shadow:0 2px 8px rgba(26,25,22,0.08);transform:translateY(-1px)}
+.kanban-card-av{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.62rem;font-weight:700;margin-bottom:0.5rem}
+.kanban-card-company{font-size:0.78rem;font-weight:600;color:var(--ink);margin-bottom:0.15rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kanban-card-role{font-size:0.7rem;color:var(--ink-60);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:0.5rem}
+.kanban-card-footer{display:flex;align-items:center;justify-content:space-between}
+.kanban-card-date{font-size:0.62rem;color:var(--ink-60)}
+.kanban-card-tat{font-size:0.6rem;font-weight:500;padding:0.1rem 0.4rem;border-radius:100px;background:var(--ink-08);color:var(--ink-60)}
+.kanban-card-tat.fast{background:#E8F5E9;color:#2E7D32}
+.kanban-card-tat.mid{background:#FFF8E1;color:#F57F17}
+.kanban-card-tat.slow{background:#FBE9E9;color:#7A1A1A}
+.kanban-card-journey{display:flex;align-items:center;gap:0.2rem;margin-top:0.4rem;flex-wrap:wrap}
+.journey-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.journey-arrow{font-size:0.55rem;color:var(--ink-60)}
 
-/* EMAIL LIST */
+/* Column accent colors */
+.col-applied .kanban-col-header{border-top:3px solid #1B4F8A}
+.col-applied .kanban-col-title{color:#1B4F8A}
+.col-screening .kanban-col-header{border-top:3px solid #7A4F00}
+.col-screening .kanban-col-title{color:#7A4F00}
+.col-interview .kanban-col-header{border-top:3px solid #4A2278}
+.col-interview .kanban-col-title{color:#4A2278}
+.col-offer .kanban-col-header{border-top:3px solid #1B6B45}
+.col-offer .kanban-col-title{color:#1B6B45}
+.col-rejected .kanban-col-header{border-top:3px solid #7A1A1A}
+.col-rejected .kanban-col-title{color:#7A1A1A}
+
+/* ── LIST VIEW ── */
 .email-list{background:#fff;border:1px solid var(--ink-20);border-radius:var(--r-lg);overflow:hidden}
 .email-row{display:flex;align-items:flex-start;gap:0.8rem;padding:0.8rem 1rem;border-bottom:1px solid var(--ink-08);cursor:pointer;transition:background 0.12s}
 .email-row:last-child{border-bottom:none}
@@ -106,18 +140,6 @@ body{font-family:var(--sans);background:#EDEAE4;color:var(--ink);min-height:100v
 .state-desc{font-size:0.8rem;color:var(--ink-60);max-width:300px;line-height:1.65}
 .state-btn{display:inline-flex;align-items:center;gap:0.4rem;background:var(--ink);color:var(--cream);font-family:var(--sans);font-size:0.8rem;font-weight:500;padding:0.6rem 1.2rem;border-radius:100px;border:none;cursor:pointer;margin-top:0.25rem}
 
-/* PROCESSING STATE */
-.processing-card{background:#fff;border:1px solid var(--ink-20);border-radius:var(--r-lg);padding:1.5rem;margin-bottom:0.65rem}
-.processing-step{display:flex;align-items:center;gap:0.75rem;padding:0.6rem 0;border-bottom:1px solid var(--ink-08)}
-.processing-step:last-child{border-bottom:none}
-.step-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.step-dot.done{background:var(--accent)}
-.step-dot.active{background:#F0B429;animation:pulse-dot 1s infinite}
-.step-dot.waiting{background:var(--ink-20)}
-@keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:0.3}}
-.step-text{font-size:0.8rem;color:var(--ink)}
-.step-count{margin-left:auto;font-size:0.72rem;color:var(--ink-60)}
-
 /* SKELETON */
 .sk-row{display:flex;align-items:center;gap:0.8rem;padding:0.8rem 1rem;border-bottom:1px solid var(--ink-08)}
 .sk{background:linear-gradient(90deg,var(--ink-08) 25%,rgba(26,25,22,0.08) 50%,var(--ink-08) 75%);background-size:200% 100%;animation:shimmer 1.3s infinite;border-radius:4px}
@@ -126,23 +148,45 @@ body{font-family:var(--sans);background:#EDEAE4;color:var(--ink);min-height:100v
 .sk-lines{flex:1;display:flex;flex-direction:column;gap:0.35rem}
 .sk-line{height:9px;border-radius:4px}
 
+/* PROCESSING */
+.processing-card{background:#fff;border:1px solid var(--ink-20);border-radius:var(--r-lg);padding:0.9rem 1.1rem;margin-bottom:0.85rem}
+.processing-step{display:flex;align-items:center;gap:0.75rem;padding:0.5rem 0;border-bottom:1px solid var(--ink-08)}
+.processing-step:last-child{border-bottom:none;padding-bottom:0}
+.step-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;transition:background 0.3s}
+.step-dot.done{background:var(--accent)}
+.step-dot.active{background:#F0B429;animation:pdot 1s infinite}
+.step-dot.waiting{background:var(--ink-20)}
+@keyframes pdot{0%,100%{opacity:1}50%{opacity:0.3}}
+.step-text{font-size:0.78rem;color:var(--ink)}
+.step-count{margin-left:auto;font-size:0.7rem;color:var(--ink-60)}
+
 /* DETAIL PANEL */
 .detail-overlay{position:fixed;inset:0;background:rgba(26,25,22,0.38);z-index:200;opacity:0;pointer-events:none;transition:opacity 0.2s;backdrop-filter:blur(2px);display:flex;justify-content:flex-end}
 .detail-overlay.open{opacity:1;pointer-events:all}
-.detail-panel{width:420px;max-width:90vw;background:#fff;height:100%;overflow-y:auto;transform:translateX(100%);transition:transform 0.24s;padding:1.5rem;display:flex;flex-direction:column;gap:0}
+.detail-panel{width:420px;max-width:90vw;background:#fff;height:100%;overflow-y:auto;transform:translateX(100%);transition:transform 0.24s;padding:1.5rem}
 .detail-overlay.open .detail-panel{transform:translateX(0)}
-.detail-close{width:26px;height:26px;border-radius:50%;border:1px solid var(--ink-20);background:none;cursor:pointer;font-size:0.95rem;color:var(--ink-60);display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;flex-shrink:0}
+.detail-close{width:26px;height:26px;border-radius:50%;border:1px solid var(--ink-20);background:none;cursor:pointer;font-size:0.95rem;color:var(--ink-60);display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem}
 .d-co{font-size:0.68rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-60);margin-bottom:0.3rem}
 .d-role{font-family:var(--serif);font-weight:300;font-size:1.25rem;letter-spacing:-0.02em;line-height:1.3;margin-bottom:0.75rem}
-.d-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.1rem}
-.d-section-label{font-size:0.65rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-60);margin-bottom:0.5rem;margin-top:1rem}
+.d-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1rem}
+.d-sec-label{font-size:0.65rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-60);margin-bottom:0.5rem;margin-top:1rem}
 .d-body{font-size:0.8rem;color:var(--ink-60);line-height:1.75;background:var(--cream);border-radius:var(--r);padding:1rem;white-space:pre-wrap;word-break:break-word}
+.d-journey{background:var(--cream);border-radius:var(--r);padding:0.85rem 1rem;margin-top:0.5rem}
+.d-journey-title{font-size:0.65rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-60);margin-bottom:0.65rem}
+.d-journey-steps{display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap}
+.d-journey-step{display:flex;flex-direction:column;align-items:center;gap:0.2rem}
+.d-journey-dot{width:10px;height:10px;border-radius:50%}
+.d-journey-label{font-size:0.6rem;color:var(--ink-60)}
+.d-journey-arrow{color:var(--ink-60);font-size:0.7rem;margin-top:-6px}
+.d-tat-row{display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.75rem}
+.d-tat-chip{font-size:0.7rem;font-weight:500;padding:0.25rem 0.65rem;border-radius:100px;background:#fff;border:1px solid var(--ink-20);color:var(--ink-60)}
 .d-privacy-note{font-size:0.7rem;color:var(--ink-60);background:var(--accent-light);border-radius:var(--r);padding:0.65rem 0.85rem;margin-top:1rem;line-height:1.55}
 
-@media(max-width:720px){
-.sidebar{display:none}
-.main{margin-left:0}
+@media(max-width:900px){
+.sidebar{display:none}.main{margin-left:0}
 .stats-row{grid-template-columns:repeat(3,1fr)}
+.tat-row{grid-template-columns:repeat(2,1fr)}
+.kanban-board{grid-template-columns:repeat(3,minmax(180px,1fr))}
 }
 </style>
 </head>
@@ -151,6 +195,16 @@ body{font-family:var(--sans);background:#EDEAE4;color:var(--ink);min-height:100v
 <div class="topnav">
   <a href="/" class="topnav-logo">FreeJob<span>Tracker</span>.ai</a>
   <div class="topnav-right">
+    <div class="view-toggle">
+      <button class="view-btn active" id="btn-kanban" onclick="switchView('kanban')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="5" height="18" rx="1"/><rect x="10" y="3" width="5" height="18" rx="1"/><rect x="17" y="3" width="4" height="18" rx="1"/></svg>
+        Board
+      </button>
+      <button class="view-btn" id="btn-list" onclick="switchView('list')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        List
+      </button>
+    </div>
     <div class="user-pill">
       <div class="user-initial" id="nav-initial">?</div>
       <span class="user-name" id="nav-name">Loading...</span>
@@ -162,27 +216,27 @@ body{font-family:var(--sans);background:#EDEAE4;color:var(--ink);min-height:100v
 <div class="app">
   <div class="sidebar">
     <span class="sb-label">Pipeline</span>
-    <div class="sb-item active" id="sb-all" onclick="filterBy('all',this)">
+    <div class="sb-item active" onclick="filterBy('all',this)">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
       All <span class="sb-count" id="c-all">0</span>
     </div>
-    <div class="sb-item" id="sb-applied" onclick="filterBy('applied',this)">
+    <div class="sb-item" onclick="filterBy('applied',this)">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
       Applied <span class="sb-count" id="c-applied">0</span>
     </div>
-    <div class="sb-item" id="sb-screening" onclick="filterBy('screening',this)">
+    <div class="sb-item" onclick="filterBy('screening',this)">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
       Screening <span class="sb-count" id="c-screening">0</span>
     </div>
-    <div class="sb-item" id="sb-interview" onclick="filterBy('interview',this)">
+    <div class="sb-item" onclick="filterBy('interview',this)">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
       Interview <span class="sb-count" id="c-interview">0</span>
     </div>
-    <div class="sb-item" id="sb-offer" onclick="filterBy('offer',this)">
+    <div class="sb-item" onclick="filterBy('offer',this)">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
       Offer <span class="sb-count" id="c-offer">0</span>
     </div>
-    <div class="sb-item" id="sb-rejected" onclick="filterBy('rejected',this)">
+    <div class="sb-item" onclick="filterBy('rejected',this)">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
       Rejected <span class="sb-count" id="c-rejected">0</span>
     </div>
@@ -200,41 +254,55 @@ body{font-family:var(--sans);background:#EDEAE4;color:var(--ink);min-height:100v
   <div class="main">
     <!-- PRIVACY NOTICE -->
     <div class="privacy-notice">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(245,242,236,0.65)" stroke-width="2" style="flex-shrink:0;margin-top:1px"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(245,242,236,0.65)" stroke-width="2" style="flex-shrink:0;margin-top:1px"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
       <div class="privacy-notice-text">
-        <strong>Your privacy is protected.</strong> We use a two-stage process — first checking only subject and sender to identify job emails, then reading full content only for confirmed job emails to classify them. Email content is never stored on our servers. Only metadata (company, role, status, date) is saved to your dashboard.
+        <strong>Your privacy is protected.</strong> Two-stage process — subject/sender filter first, then full content read only for confirmed job emails. Email content is never stored. Only company, role, status, and date are saved.
       </div>
     </div>
 
     <!-- STATS -->
     <div class="stats-row">
-      <div class="stat-card"><div class="stat-label">Total</div><div class="stat-val" id="s-total">—</div><div class="stat-sub">applications</div></div>
+      <div class="stat-card"><div class="stat-label">Unique Jobs</div><div class="stat-val" id="s-total">—</div><div class="stat-sub">companies tracked</div></div>
       <div class="stat-card"><div class="stat-label">Applied</div><div class="stat-val" id="s-applied" style="color:#0C447C">—</div><div class="stat-sub">awaiting response</div></div>
       <div class="stat-card"><div class="stat-label">In Progress</div><div class="stat-val" id="s-progress" style="color:#4A2278">—</div><div class="stat-sub">screening + interview</div></div>
       <div class="stat-card"><div class="stat-label">Offers</div><div class="stat-val" id="s-offers" style="color:var(--accent)">—</div><div class="stat-sub">received</div></div>
       <div class="stat-card"><div class="stat-label">Rejected</div><div class="stat-val" id="s-rejected" style="color:#7A1A1A">—</div><div class="stat-sub">closed</div></div>
     </div>
 
+    <!-- TAT METRICS -->
+    <div class="tat-row" id="tat-row" style="display:none">
+      <div class="tat-card"><div class="tat-label">Applied → Screening</div><div class="tat-val" id="tat-screening">—</div><div class="tat-sub">avg days to first contact</div></div>
+      <div class="tat-card"><div class="tat-label">Applied → Interview</div><div class="tat-val" id="tat-interview">—</div><div class="tat-sub">avg days to interview</div></div>
+      <div class="tat-card"><div class="tat-label">Applied → Offer</div><div class="tat-val" id="tat-offer">—</div><div class="tat-sub">avg days to offer</div></div>
+      <div class="tat-card"><div class="tat-label">Applied → Rejected</div><div class="tat-val" id="tat-rejected">—</div><div class="tat-sub">avg days to rejection</div></div>
+    </div>
+
     <!-- TOOLBAR -->
     <div class="toolbar">
       <div class="toolbar-left">
-        <h2 id="list-title">All applications</h2>
+        <h2 id="list-title">Job Pipeline</h2>
         <p id="list-meta">Loading your emails...</p>
       </div>
-      <div class="toolbar-right">
-        <button class="refresh-btn" id="refresh-btn" onclick="loadEmails()">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
-          Refresh
-        </button>
-      </div>
+      <button class="refresh-btn" id="refresh-btn" onclick="loadEmails()">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+        Refresh
+      </button>
     </div>
 
     <div id="processing-status"></div>
-    <div class="email-list" id="email-list">
-      <div class="sk-row"><div class="sk sk-circ"></div><div class="sk-lines"><div class="sk sk-line" style="width:38%"></div><div class="sk sk-line" style="width:65%"></div><div class="sk sk-line" style="width:50%"></div></div></div>
-      <div class="sk-row"><div class="sk sk-circ"></div><div class="sk-lines"><div class="sk sk-line" style="width:42%"></div><div class="sk sk-line" style="width:58%"></div><div class="sk sk-line" style="width:45%"></div></div></div>
-      <div class="sk-row"><div class="sk sk-circ"></div><div class="sk-lines"><div class="sk sk-line" style="width:35%"></div><div class="sk sk-line" style="width:70%"></div><div class="sk sk-line" style="width:55%"></div></div></div>
-      <div class="sk-row"><div class="sk sk-circ"></div><div class="sk-lines"><div class="sk sk-line" style="width:44%"></div><div class="sk sk-line" style="width:52%"></div><div class="sk sk-line" style="width:40%"></div></div></div>
+
+    <!-- KANBAN VIEW -->
+    <div id="kanban-view" style="display:none">
+      <div class="kanban-board" id="kanban-board"></div>
+    </div>
+
+    <!-- LIST VIEW -->
+    <div id="list-view">
+      <div class="email-list" id="email-list">
+        <div class="sk-row"><div class="sk sk-circ"></div><div class="sk-lines"><div class="sk sk-line" style="width:38%"></div><div class="sk sk-line" style="width:65%"></div><div class="sk sk-line" style="width:50%"></div></div></div>
+        <div class="sk-row"><div class="sk sk-circ"></div><div class="sk-lines"><div class="sk sk-line" style="width:42%"></div><div class="sk sk-line" style="width:58%"></div><div class="sk sk-line" style="width:45%"></div></div></div>
+        <div class="sk-row"><div class="sk sk-circ"></div><div class="sk-lines"><div class="sk sk-line" style="width:35%"></div><div class="sk sk-line" style="width:70%"></div><div class="sk sk-line" style="width:55%"></div></div></div>
+      </div>
     </div>
   </div>
 </div>
@@ -246,31 +314,30 @@ body{font-family:var(--sans);background:#EDEAE4;color:var(--ink);min-height:100v
     <div class="d-co" id="d-co"></div>
     <div class="d-role" id="d-role"></div>
     <div class="d-tags" id="d-tags"></div>
-    <div class="d-section-label">Email preview</div>
+    <div id="d-journey-section"></div>
+    <div class="d-sec-label">Email preview</div>
     <div class="d-body" id="d-body"></div>
-    <div class="d-privacy-note">
-      <strong>Privacy note:</strong> This preview shows the email snippet only. Full email content was read transiently for AI classification and was not stored on our servers.
-    </div>
+    <div class="d-privacy-note"><strong>Privacy note:</strong> Full email content was read transiently for AI classification and was never stored on our servers.</div>
   </div>
 </div>
 
 <script>
-// ── CONFIG ──
 const SUPABASE_URL = 'https://nyecnftwpreovgsxuxxd.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_7fMlZQ_PTvjXP9_GZWlKtw_PNdYnDI0';
 const { createClient } = supabase;
 const sb = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-let allEmails = [], visibleEmails = [], currentFilter = 'all', session = null;
+let allEmails = [], jobs = [], currentFilter = 'all', currentView = 'kanban', session = null;
 
-// ── TAG MAP ──
 const TAG = {
-  applied:   {cls:'tag-applied',   label:'Applied'},
-  screening: {cls:'tag-screening', label:'Screening'},
-  interview: {cls:'tag-interview', label:'Interview'},
-  rejected:  {cls:'tag-rejected',  label:'Rejected'},
-  offer:     {cls:'tag-offer',     label:'Offer'},
+  applied:   {cls:'tag-applied',   label:'Applied',   dot:'#1B4F8A'},
+  screening: {cls:'tag-screening', label:'Screening', dot:'#7A4F00'},
+  interview: {cls:'tag-interview', label:'Interview', dot:'#4A2278'},
+  rejected:  {cls:'tag-rejected',  label:'Rejected',  dot:'#7A1A1A'},
+  offer:     {cls:'tag-offer',     label:'Offer',     dot:'#1B6B45'},
 };
+
+const STAGE_ORDER = ['applied','screening','interview','offer','rejected'];
 
 // ── INIT ──
 async function init() {
@@ -293,7 +360,20 @@ function updateUserUI(user) {
   }
 }
 
-// ── MAIN LOAD ──
+// ── VIEW TOGGLE ──
+function switchView(view) {
+  currentView = view;
+  document.getElementById('btn-kanban').className = 'view-btn' + (view === 'kanban' ? ' active' : '');
+  document.getElementById('btn-list').className = 'view-btn' + (view === 'list' ? ' active' : '');
+  document.getElementById('kanban-view').style.display = view === 'kanban' ? 'block' : 'none';
+  document.getElementById('list-view').style.display = view === 'list' ? 'block' : 'none';
+  if (jobs.length) {
+    if (view === 'kanban') renderKanban(jobs);
+    else renderList(allEmails);
+  }
+}
+
+// ── LOAD ──
 async function loadEmails() {
   const btn = document.getElementById('refresh-btn');
   btn.classList.add('spinning');
@@ -301,7 +381,6 @@ async function loadEmails() {
   showSkeleton();
   clearProcessing();
 
-  // Try to get token
   let token = session?.provider_token;
   if (!token) {
     const { data } = await sb.auth.getSession();
@@ -309,96 +388,337 @@ async function loadEmails() {
     if (data?.session) session = data.session;
   }
 
-  if (!token) {
-    showReconnect();
-    btn.classList.remove('spinning');
-    return;
-  }
+  if (!token) { showReconnect(); btn.classList.remove('spinning'); return; }
 
   try {
-    // ── STAGE 1: Fetch email metadata ──
     showProcessing('stage1');
-    setMeta('Stage 1 — Scanning for job emails...');
+    setMeta('Stage 1 — Scanning subject lines and senders...');
 
     const q = encodeURIComponent([
       'newer_than:180d',
-      '(',
-      'subject:application OR subject:interview OR subject:offer OR',
+      '(subject:application OR subject:interview OR subject:offer OR',
       'subject:screening OR subject:position OR subject:role OR',
       'subject:recruiter OR subject:hiring OR subject:rejected OR',
       'subject:"thank you for applying" OR subject:"application received" OR',
       'subject:"we would like to" OR subject:"moving forward" OR',
-      'subject:unfortunately OR subject:"next steps" OR subject:"your candidacy"',
-      ')'
+      'subject:unfortunately OR subject:"next steps" OR subject:"your candidacy")'
     ].join(' '));
 
-    const listRes = await fetch(
+    const res = await fetch(
       `https://gmail.googleapis.com/gmail/v1/users/me/messages?maxResults=60&q=${q}`,
       { headers: { Authorization: `Bearer ${token}` } }
     );
 
-    if (listRes.status === 401) { showReconnect(); btn.classList.remove('spinning'); return; }
-    if (!listRes.ok) throw new Error(`Gmail API error ${listRes.status}`);
+    if (res.status === 401) { showReconnect(); btn.classList.remove('spinning'); return; }
+    if (!res.ok) throw new Error(`Gmail API error ${res.status}`);
 
-    const listData = await listRes.json();
+    const listData = await res.json();
     const msgList = listData.messages || [];
-
     if (!msgList.length) { showEmpty(); btn.classList.remove('spinning'); return; }
 
-    setMeta(`Stage 1 — Fetching metadata for ${msgList.length} candidate emails...`);
+    setMeta(`Stage 1 — Fetching metadata for ${msgList.length} emails...`);
+    const metaBatch = await batchFetch(msgList.slice(0,50), token, 'metadata', 'From,Subject,Date');
 
-    // Fetch metadata (subject, from, date) for all candidates
-    const metaBatch = await batchFetch(
-      msgList.slice(0, 50),
-      token,
-      'metadata',
-      'From,Subject,Date'
-    );
-
-    // Stage 1 filter — is this email job-related based on subject + sender?
     const jobCandidates = metaBatch.filter(msg => {
       const h = msg?.payload?.headers || [];
-      const subject = (h.find(x => x.name === 'Subject')?.value || '').toLowerCase();
-      const from = (h.find(x => x.name === 'From')?.value || '').toLowerCase();
-      const snippet = (msg.snippet || '').toLowerCase();
+      const subject = (h.find(x=>x.name==='Subject')?.value||'').toLowerCase();
+      const from = (h.find(x=>x.name==='From')?.value||'').toLowerCase();
+      const snippet = (msg.snippet||'').toLowerCase();
       return isJobRelated(subject, from, snippet);
     });
 
-    updateProcessingCount('stage1', metaBatch.length, jobCandidates.length);
-    setMeta(`Stage 1 complete — ${jobCandidates.length} job emails found. Starting Stage 2...`);
-
-    if (!jobCandidates.length) { showEmpty(); btn.classList.remove('spinning'); return; }
-
-    // ── STAGE 2: Full email fetch + classification ──
     showProcessing('stage2', jobCandidates.length);
-    setMeta(`Stage 2 — Reading and classifying ${jobCandidates.length} job emails...`);
+    setMeta(`Stage 2 — Reading ${jobCandidates.length} job emails...`);
 
-    // Fetch full email content for job candidates only
-    const fullBatch = await batchFetch(
-      jobCandidates.map(m => ({ id: m.id })),
-      token,
-      'full',
-      ''
-    );
+    const fullBatch = await batchFetch(jobCandidates.map(m=>({id:m.id})), token, 'full', '');
 
-    // Classify each email using full content
     allEmails = fullBatch
       .map(parseAndClassify)
       .filter(e => e && e.status !== 'skip')
-      .sort((a, b) => b.ts - a.ts);
+      .sort((a,b) => b.ts - a.ts);
+
+    // Deduplicate and build job objects
+    jobs = deduplicateJobs(allEmails);
+    calculateTAT(jobs);
 
     updateCounts();
-    renderList(allEmails);
-    setMeta(`${allEmails.length} applications classified · Last synced just now`);
     clearProcessing();
+
+    if (currentView === 'kanban') renderKanban(jobs);
+    else renderList(allEmails);
+
+    setMeta(`${jobs.length} unique jobs tracked · ${allEmails.length} emails classified`);
+    document.getElementById('tat-row').style.display = 'grid';
 
   } catch(e) {
     console.error(e);
     showError(e.message);
   }
-
   btn.classList.remove('spinning');
 }
+
+// ── DEDUPLICATE JOBS ──
+function deduplicateJobs(emails) {
+  const map = new Map();
+
+  emails.forEach(email => {
+    const key = normalizeCompany(email.company);
+    if (!map.has(key)) {
+      map.set(key, {
+        key,
+        company: email.company,
+        senderEmail: email.senderEmail,
+        color: email.color,
+        emails: [],
+        stages: new Set(),
+        latestStage: email.status,
+        latestTs: email.ts,
+        earliestTs: email.ts,
+        role: email.subject,
+        snippet: email.snippet,
+        id: email.id,
+      });
+    }
+    const job = map.get(key);
+    job.emails.push(email);
+    job.stages.add(email.status);
+    if (email.ts < job.earliestTs) {
+      job.earliestTs = email.ts;
+      job.role = email.subject;
+    }
+    if (email.ts > job.latestTs) {
+      job.latestTs = email.ts;
+      job.latestStage = email.status;
+      job.snippet = email.snippet;
+      job.id = email.id;
+    }
+  });
+
+  // Determine final stage (highest in pipeline order)
+  const stageRank = {offer:5, interview:4, screening:3, applied:2, rejected:1};
+  map.forEach(job => {
+    let best = null;
+    job.stages.forEach(s => {
+      if (!best || (stageRank[s]||0) > (stageRank[best]||0)) best = s;
+    });
+    job.currentStage = best || job.latestStage;
+    job.stageList = STAGE_ORDER.filter(s => job.stages.has(s));
+    job.date = fmtDate(job.latestTs);
+  });
+
+  return Array.from(map.values()).sort((a,b) => {
+    const r = {offer:5,interview:4,screening:3,applied:2,rejected:1};
+    return (r[b.currentStage]||0) - (r[a.currentStage]||0) || b.latestTs - a.latestTs;
+  });
+}
+
+function normalizeCompany(name) {
+  return (name||'').toLowerCase()
+    .replace(/\b(inc|ltd|llc|pvt|private|limited|technologies|technology|solutions|services|global|india|group)\b/g,'')
+    .replace(/[^a-z0-9]/g,' ')
+    .replace(/\s+/g,' ')
+    .trim();
+}
+
+// ── TAT CALCULATION ──
+function calculateTAT(jobs) {
+  const tats = {screening:[], interview:[], offer:[], rejected:[]};
+
+  jobs.forEach(job => {
+    const appliedEmail = job.emails.find(e => e.status === 'applied');
+    if (!appliedEmail) return;
+    const appliedTs = appliedEmail.ts;
+
+    ['screening','interview','offer','rejected'].forEach(stage => {
+      const stageEmail = job.emails.find(e => e.status === stage);
+      if (stageEmail && stageEmail.ts > appliedTs) {
+        const days = Math.round((stageEmail.ts - appliedTs) / 86400000);
+        if (days >= 0 && days < 365) tats[stage].push(days);
+      }
+    });
+
+    // Store TAT on job for detail panel
+    job.tat = {};
+    ['screening','interview','offer','rejected'].forEach(stage => {
+      const stageEmail = job.emails.find(e => e.status === stage);
+      if (stageEmail && stageEmail.ts > appliedTs) {
+        job.tat[stage] = Math.round((stageEmail.ts - appliedTs) / 86400000);
+      }
+    });
+  });
+
+  // Update TAT cards
+  ['screening','interview','offer','rejected'].forEach(stage => {
+    const el = document.getElementById(`tat-${stage}`);
+    if (tats[stage].length) {
+      const avg = Math.round(tats[stage].reduce((a,b)=>a+b,0) / tats[stage].length);
+      el.textContent = `${avg}d`;
+    } else {
+      el.textContent = '—';
+    }
+  });
+}
+
+// ── RENDER KANBAN ──
+function renderKanban(jobList) {
+  const board = document.getElementById('kanban-board');
+  const stages = ['applied','screening','interview','offer','rejected'];
+  const colColors = {applied:'col-applied',screening:'col-screening',interview:'col-interview',offer:'col-offer',rejected:'col-rejected'};
+
+  // Filter jobs based on current sidebar filter
+  const filtered = currentFilter === 'all'
+    ? jobList
+    : jobList.filter(j => j.currentStage === currentFilter);
+
+  board.innerHTML = stages.map(stage => {
+    const stageJobs = filtered.filter(j => j.currentStage === stage);
+    const cards = stageJobs.map((job, i) => {
+      const init = (job.company||'?')[0].toUpperCase();
+      const tatText = getTatText(job, stage);
+      const tatClass = getTatClass(job, stage);
+      const journeyDots = job.stageList.map((s,si) =>
+        `<div class="journey-dot" style="background:${TAG[s]?.dot||'#ccc'}" title="${TAG[s]?.label||s}"></div>
+         ${si < job.stageList.length-1 ? '<span class="journey-arrow">›</span>' : ''}`
+      ).join('');
+
+      return `<div class="kanban-card" onclick="openJobDetail('${job.key}')">
+        <div class="kanban-card-av" style="background:${job.color.bg};color:${job.color.text}">${init}</div>
+        <div class="kanban-card-company">${esc(job.company)}</div>
+        <div class="kanban-card-role">${esc(job.role)}</div>
+        <div class="kanban-card-footer">
+          <span class="kanban-card-date">${job.date}</span>
+          ${tatText ? `<span class="kanban-card-tat ${tatClass}">${tatText}</span>` : ''}
+        </div>
+        ${job.stageList.length > 1 ? `<div class="kanban-card-journey" style="margin-top:0.4rem">${journeyDots}</div>` : ''}
+      </div>`;
+    }).join('');
+
+    return `<div class="kanban-col ${colColors[stage]}">
+      <div class="kanban-col-header">
+        <span class="kanban-col-title">${TAG[stage]?.label||stage}</span>
+        <span class="kanban-col-count">${stageJobs.length}</span>
+      </div>
+      <div class="kanban-cards">
+        ${cards || `<div style="padding:1rem;text-align:center;font-size:0.75rem;color:var(--ink-60)">No jobs here</div>`}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function getTatText(job, stage) {
+  if (!job.tat) return '';
+  const days = job.tat[stage] || (stage === 'applied' && job.tat.screening) || null;
+  if (!days) return '';
+  return `${days}d`;
+}
+
+function getTatClass(job, stage) {
+  const days = job.tat?.[stage];
+  if (!days) return '';
+  if (days <= 7) return 'fast';
+  if (days <= 21) return 'mid';
+  return 'slow';
+}
+
+// ── RENDER LIST ──
+let visibleEmails = [];
+function renderList(emails) {
+  const filtered = currentFilter === 'all' ? emails : emails.filter(e => e.status === currentFilter);
+  visibleEmails = filtered;
+  const list = document.getElementById('email-list');
+  if (!filtered.length) { list.innerHTML = '<div class="state-box"><div class="state-title">No emails in this category</div></div>'; return; }
+  list.innerHTML = filtered.map((e,i) => {
+    const tag = TAG[e.status]||{cls:'',label:e.status};
+    return `<div class="email-row" onclick="openEmailDetail(${i})">
+      <div class="email-av" style="background:${e.color.bg};color:${e.color.text}">${(e.company||'?')[0].toUpperCase()}</div>
+      <div class="email-body">
+        <div class="email-from">${esc(e.company)} — ${esc(e.senderEmail)}</div>
+        <div class="email-subj">${esc(e.subject)}</div>
+        <div class="email-snip">${esc(e.snippet)}</div>
+      </div>
+      <div class="email-meta">
+        <span class="email-date">${e.date}</span>
+        <span class="tag ${tag.cls}">${tag.label}</span>
+        <span class="ai-badge">AI</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── FILTER ──
+function filterBy(filter, el) {
+  currentFilter = filter;
+  document.querySelectorAll('.sb-item').forEach(x => x.classList.remove('active'));
+  el.classList.add('active');
+  const titles = {all:'Job Pipeline',applied:'Applied',screening:'Screening',interview:'Interview',offer:'Offers',rejected:'Rejected'};
+  document.getElementById('list-title').textContent = titles[filter]||'Pipeline';
+  if (currentView === 'kanban') renderKanban(jobs);
+  else renderList(allEmails);
+}
+
+// ── COUNTS ──
+function updateCounts() {
+  const c = {all:jobs.length, applied:0, screening:0, interview:0, offer:0, rejected:0};
+  jobs.forEach(j => { if(c[j.currentStage]!==undefined) c[j.currentStage]++; });
+  Object.keys(c).forEach(k => { const el=document.getElementById('c-'+k); if(el) el.textContent=c[k]; });
+  document.getElementById('s-total').textContent    = jobs.length;
+  document.getElementById('s-applied').textContent  = c.applied;
+  document.getElementById('s-progress').textContent = c.screening + c.interview;
+  document.getElementById('s-offers').textContent   = c.offer;
+  document.getElementById('s-rejected').textContent = c.rejected;
+}
+
+// ── DETAIL PANELS ──
+function openJobDetail(key) {
+  const job = jobs.find(j => j.key === key);
+  if (!job) return;
+  const tag = TAG[job.currentStage]||{cls:'',label:job.currentStage};
+  document.getElementById('d-co').textContent = job.company;
+  document.getElementById('d-role').textContent = job.role;
+  document.getElementById('d-tags').innerHTML = `
+    <span class="tag ${tag.cls}">${tag.label}</span>
+    <span class="tag" style="background:var(--ink-08);color:var(--ink-60)">${job.date}</span>
+    ${job.stageList.length > 1 ? `<span class="tag" style="background:var(--ink-08);color:var(--ink-60)">${job.stageList.length} stages</span>` : ''}`;
+
+  // Journey section
+  let journeyHTML = '';
+  if (job.stageList.length > 0) {
+    const steps = job.stageList.map(s =>
+      `<div class="d-journey-step">
+        <div class="d-journey-dot" style="background:${TAG[s]?.dot||'#ccc'}"></div>
+        <div class="d-journey-label">${TAG[s]?.label||s}</div>
+      </div>`
+    ).join('<div class="d-journey-arrow">›</div>');
+
+    const tatChips = Object.entries(job.tat||{}).map(([stage, days]) =>
+      `<span class="d-tat-chip">Applied → ${TAG[stage]?.label||stage}: ${days} days</span>`
+    ).join('');
+
+    journeyHTML = `<div class="d-journey">
+      <div class="d-journey-title">Application Journey</div>
+      <div class="d-journey-steps">${steps}</div>
+      ${tatChips ? `<div class="d-tat-row">${tatChips}</div>` : ''}
+    </div>`;
+  }
+  document.getElementById('d-journey-section').innerHTML = journeyHTML;
+  document.getElementById('d-body').textContent = job.snippet || 'No preview available.';
+  document.getElementById('detail-overlay').classList.add('open');
+}
+
+function openEmailDetail(i) {
+  const e = visibleEmails[i]; if(!e) return;
+  const job = jobs.find(j => j.key === normalizeCompany(e.company));
+  if (job) { openJobDetail(job.key); return; }
+  const tag = TAG[e.status]||{cls:'',label:e.status};
+  document.getElementById('d-co').textContent = e.company;
+  document.getElementById('d-role').textContent = e.subject;
+  document.getElementById('d-tags').innerHTML = `<span class="tag ${tag.cls}">${tag.label}</span><span class="tag" style="background:var(--ink-08);color:var(--ink-60)">${e.date}</span>`;
+  document.getElementById('d-journey-section').innerHTML = '';
+  document.getElementById('d-body').textContent = e.snippet || 'No preview available.';
+  document.getElementById('detail-overlay').classList.add('open');
+}
+
+function closeDetail() { document.getElementById('detail-overlay').classList.remove('open'); }
 
 // ── BATCH FETCH ──
 async function batchFetch(msgs, token, format, headers) {
@@ -417,18 +737,15 @@ async function batchFetch(msgs, token, format, headers) {
   return results;
 }
 
-// ── STAGE 1: JOB FILTER (metadata only) ──
+// ── CLASSIFICATION ──
 function isJobRelated(subject, from, snippet) {
   const text = subject + ' ' + from + ' ' + snippet;
-  // Exclude obvious non-job emails
   const exclude = ['newsletter','unsubscribe','receipt','order confirmed','shipment','delivery confirmed','payment received','invoice','bank statement','otp','verification code','password reset'];
   if (exclude.some(w => text.includes(w))) return false;
-  // Include if matches job patterns
   const include = ['application','interview','offer','screening','position','role','recruiter','hiring','rejected','unfortunately','candidacy','next steps','thank you for applying','application received','we would like to','moving forward','talent','career','job opening'];
   return include.some(w => text.includes(w));
 }
 
-// ── STAGE 2: FULL CLASSIFICATION ──
 function parseAndClassify(msg) {
   try {
     const h = msg.payload?.headers || [];
@@ -437,35 +754,24 @@ function parseAndClassify(msg) {
     const subject = get('Subject');
     const date    = get('Date');
     const snippet = msg.snippet || '';
-
-    // Extract full body text for classification
-    const body = extractBody(msg.payload);
+    const body    = extractBody(msg.payload);
     const fullText = (subject + ' ' + snippet + ' ' + body + ' ' + from).toLowerCase();
 
     const fromMatch = from.match(/^"?(.+?)"?\s*<(.+?)>$/) || [null, from, from];
-    const senderName  = (fromMatch[1] || '').replace(/"/g,'').trim() || from;
-    const senderEmail = (fromMatch[2] || from).trim();
+    const senderName  = (fromMatch[1]||'').replace(/"/g,'').trim() || from;
+    const senderEmail = (fromMatch[2]||from).trim();
     const company     = extractCompany(senderName, senderEmail);
     const ts          = new Date(date).getTime() || 0;
-
-    // Stage 2 classification using full email content
-    const status = classifyFull(fullText, subject.toLowerCase(), body.toLowerCase());
+    const status      = classifyFull(fullText, subject.toLowerCase(), body.toLowerCase());
     if (status === 'skip') return null;
 
-    return {
-      id: msg.id, company, senderName, senderEmail,
-      subject, snippet, body: body.slice(0, 800),
-      ts, date: fmtDate(ts), status,
-      color: avatarColor(company)
-    };
-  } catch(e) { return null; }
+    return { id:msg.id, company, senderName, senderEmail, subject, snippet, body:body.slice(0,800), ts, date:fmtDate(ts), status, color:avatarColor(company) };
+  } catch { return null; }
 }
 
-// Extract plain text body from Gmail payload
 function extractBody(payload) {
   if (!payload) return '';
   let text = '';
-
   function walk(part) {
     if (!part) return;
     if (part.mimeType === 'text/plain' && part.body?.data) {
@@ -481,29 +787,20 @@ function extractBody(payload) {
     }
     if (part.parts) part.parts.forEach(walk);
   }
-
   walk(payload);
-  return text.replace(/\s+/g,' ').trim().slice(0, 3000);
+  return text.replace(/\s+/g,' ').trim().slice(0,3000);
 }
 
-// Stage 2 classification — uses full email body
 function classifyFull(fullText, subject, body) {
-  // Offer
   if (/offer letter|pleased to offer|formal offer|compensation package|joining date|start date|congratulations.*offer|offer of employment|we.d like to offer|extend.*offer|accept.*offer|salary.*offer/.test(fullText)) return 'offer';
-  // Interview
-  if (/interview.*schedul|schedul.*interview|interview.*confirm|panel interview|technical.*interview|hiring manager.*meet|interview.*invite|interview.*round|case.*interview|zoom.*interview|teams.*interview|interview.*loop|we.d like to.*interview/.test(fullText)) return 'interview';
-  // Screening
-  if (/screening call|phone screen|introductory call|recruiter.*call|initial.*call|quick.*call|we.d love to connect|reach out.*opportunit|interested in your background|talent.*reach|preliminary.*interview|30.minute.*call|15.minute.*call|brief.*call/.test(fullText)) return 'screening';
-  // Rejected
+  if (/interview.*schedul|schedul.*interview|interview.*confirm|panel interview|technical.*interview|hiring manager.*meet|interview.*invite|interview.*round|case.*interview|zoom.*interview|teams.*interview/.test(fullText)) return 'interview';
+  if (/screening call|phone screen|introductory call|recruiter.*call|initial.*call|quick.*call|we.d love to connect|reach out.*opportunit|interested in your background|talent.*reach|30.minute.*call|15.minute.*call|brief.*call/.test(fullText)) return 'screening';
   if (/not moving forward|decided not to|unfortunately.*not|not.*selected|other candidates|not.*progress|position.*filled|pursue other|regret to inform|not the right fit|won.t be moving|after careful consideration.*not|not.*proceeding|not.*advance/.test(fullText)) return 'rejected';
-  // Applied
-  if (/application.*received|received.*application|thank.*applying|application.*submitted|successfully applied|application.*under review|reviewing.*application|we received your.*application|application.*confirmation|applied.*successfully/.test(fullText)) return 'applied';
-  // Generic job signal
+  if (/application.*received|received.*application|thank.*applying|application.*submitted|successfully applied|application.*under review|reviewing.*application|we received your.*application|application.*confirmation/.test(fullText)) return 'applied';
   if (/job|position|role|hiring|recruiter|career|opportunit/.test(subject)) return 'applied';
   return 'skip';
 }
 
-// ── HELPERS ──
 function extractCompany(name, email) {
   const cleaned = name.replace(/\b(noreply|no-reply|careers|talent|recruiting|hr|jobs|team|notifications?|alerts?|do not reply|donotreply|support)\b/gi,'').trim();
   if (cleaned.length > 1 && !cleaned.includes('@')) return cleaned;
@@ -514,175 +811,63 @@ function extractCompany(name, email) {
 
 const BG  = ['#E8F5E9','#EDE7F6','#FFF8E1','#EBF1FA','#FBE9E9','#E8F3EE','#FFF3E0','#E3F2FD','#FCE4EC','#F3E5F5'];
 const TXT = ['#2E7D32','#512DA8','#F57F17','#0C447C','#7A1A1A','#1B6B45','#E65100','#0277BD','#880E4F','#4A148C'];
-function avatarColor(s) {
-  const i = (s?.charCodeAt(0)||0) % BG.length;
-  return { bg: BG[i], text: TXT[i] };
-}
+function avatarColor(s) { const i=(s?.charCodeAt(0)||0)%BG.length; return {bg:BG[i],text:TXT[i]}; }
 
 function fmtDate(ts) {
   if (!ts) return '';
   const d = new Date(ts), now = new Date();
-  const diff = Math.floor((now - d) / 86400000);
-  if (diff === 0) return 'Today';
-  if (diff === 1) return 'Yesterday';
-  if (diff < 7) return d.toLocaleDateString('en',{weekday:'short'});
+  const diff = Math.floor((now-d)/86400000);
+  if (diff===0) return 'Today';
+  if (diff===1) return 'Yesterday';
+  if (diff<7) return d.toLocaleDateString('en',{weekday:'short'});
   return d.toLocaleDateString('en',{day:'numeric',month:'short'});
 }
 
-// ── RENDER ──
-function renderList(emails) {
-  visibleEmails = emails;
-  const list = document.getElementById('email-list');
-  if (!emails.length) { showEmpty(); return; }
-  list.innerHTML = emails.map((e,i) => {
-    const tag = TAG[e.status]||{cls:'',label:e.status};
-    return `<div class="email-row" onclick="openDetail(${i})">
-      <div class="email-av" style="background:${e.color.bg};color:${e.color.text}">${(e.company||'?')[0].toUpperCase()}</div>
-      <div class="email-body">
-        <div class="email-from">${esc(e.company)} — ${esc(e.senderEmail)}</div>
-        <div class="email-subj">${esc(e.subject)}</div>
-        <div class="email-snip">${esc(e.snippet)}</div>
-      </div>
-      <div class="email-meta">
-        <span class="email-date">${e.date}</span>
-        <span class="tag ${tag.cls}">${tag.label}</span>
-        <span class="ai-badge">AI</span>
-      </div>
-    </div>`;
-  }).join('');
-}
-
-function updateCounts() {
-  const c = {all:0,applied:0,screening:0,interview:0,offer:0,rejected:0};
-  allEmails.forEach(e => { c.all++; if(c[e.status]!==undefined) c[e.status]++; });
-  Object.keys(c).forEach(k => { const el=document.getElementById('c-'+k); if(el) el.textContent=c[k]; });
-  document.getElementById('s-total').textContent    = c.all;
-  document.getElementById('s-applied').textContent  = c.applied;
-  document.getElementById('s-progress').textContent = c.screening + c.interview;
-  document.getElementById('s-offers').textContent   = c.offer;
-  document.getElementById('s-rejected').textContent = c.rejected;
-}
-
-function filterBy(filter, el) {
-  currentFilter = filter;
-  document.querySelectorAll('.sb-item').forEach(x => x.classList.remove('active'));
-  el.classList.add('active');
-  const titles = {all:'All applications',applied:'Applied',screening:'Screening',interview:'Interview',offer:'Offers',rejected:'Rejected'};
-  document.getElementById('list-title').textContent = titles[filter]||'All';
-  const filtered = filter==='all' ? allEmails : allEmails.filter(e=>e.status===filter);
-  setMeta(`${filtered.length} emails`);
-  renderList(filtered);
-}
-
-// ── DETAIL PANEL ──
-function openDetail(i) {
-  const e = visibleEmails[i]; if(!e) return;
-  const tag = TAG[e.status]||{cls:'',label:e.status};
-  document.getElementById('d-co').textContent = e.company;
-  document.getElementById('d-role').textContent = e.subject;
-  document.getElementById('d-tags').innerHTML = `
-    <span class="tag ${tag.cls}">${tag.label}</span>
-    <span class="tag" style="background:var(--ink-08);color:var(--ink-60)">${e.date}</span>
-    <span class="tag" style="background:var(--ink-08);color:var(--ink-60);max-width:200px;overflow:hidden;text-overflow:ellipsis">${esc(e.senderEmail)}</span>`;
-  document.getElementById('d-body').textContent = e.snippet || 'No preview available.';
-  document.getElementById('detail-overlay').classList.add('open');
-}
-function closeDetail() { document.getElementById('detail-overlay').classList.remove('open'); }
-
-// ── PROCESSING INDICATOR ──
-function showProcessing(stage, count) {
-  const el = document.getElementById('processing-status');
-  if (stage === 'stage1') {
-    el.innerHTML = `<div class="processing-card">
-      <div class="processing-step"><div class="step-dot active"></div><div class="step-text">Stage 1 — Scanning subject lines and senders for job emails</div></div>
-      <div class="processing-step"><div class="step-dot waiting"></div><div class="step-text">Stage 2 — Reading full content of confirmed job emails</div></div>
-      <div class="processing-step"><div class="step-dot waiting"></div><div class="step-text">Classifying into Applied, Screening, Interview, Rejected, Offer</div></div>
-    </div>`;
-  } else if (stage === 'stage2') {
-    el.innerHTML = `<div class="processing-card">
-      <div class="processing-step"><div class="step-dot done"></div><div class="step-text">Stage 1 complete — ${count} job emails identified</div><div class="step-count">${count} emails</div></div>
-      <div class="processing-step"><div class="step-dot active"></div><div class="step-text">Stage 2 — Reading and classifying ${count} job emails</div></div>
-      <div class="processing-step"><div class="step-dot waiting"></div><div class="step-text">Building your dashboard</div></div>
-    </div>`;
-  }
-}
-
-function updateProcessingCount(stage, total, found) {
-  // Already handled by showProcessing('stage2', found)
-}
-
-function clearProcessing() {
-  document.getElementById('processing-status').innerHTML = '';
-}
-
-// ── EMPTY / ERROR / RECONNECT ──
+// ── STATES ──
 function showEmpty() {
-  document.getElementById('email-list').innerHTML = `
-    <div class="state-box">
-      <div class="state-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B6B45" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg></div>
-      <div class="state-title">No job emails found</div>
-      <div class="state-desc">We scanned your last 6 months of Gmail but didn't find any job-related emails. Apply to some roles and check back!</div>
-    </div>`;
-  setMeta('0 emails found');
-  ['s-total','s-applied','s-progress','s-offers','s-rejected'].forEach(id => document.getElementById(id).textContent='0');
+  document.getElementById('email-list').innerHTML = `<div class="state-box"><div class="state-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B6B45" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg></div><div class="state-title">No job emails found</div><div class="state-desc">We scanned your last 6 months of Gmail but didn't find any job-related emails.</div></div>`;
+  document.getElementById('kanban-board').innerHTML = `<div class="state-box" style="grid-column:1/-1"><div class="state-title">No job emails found</div><div class="state-desc">Apply to some roles and check back!</div></div>`;
+  setMeta('0 jobs found');
 }
 
 function showError(msg) {
-  document.getElementById('email-list').innerHTML = `
-    <div class="state-box">
-      <div class="state-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B6B45" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="13"/><circle cx="12" cy="16" r="0.5" fill="#1B6B45"/></svg></div>
-      <div class="state-title">Something went wrong</div>
-      <div class="state-desc">${esc(msg)}</div>
-      <button class="state-btn" onclick="loadEmails()">Try again</button>
-    </div>`;
+  document.getElementById('email-list').innerHTML = `<div class="state-box"><div class="state-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B6B45" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="13"/></svg></div><div class="state-title">Something went wrong</div><div class="state-desc">${esc(msg)}</div><button class="state-btn" onclick="loadEmails()">Try again</button></div>`;
 }
 
 function showReconnect() {
   clearProcessing();
-  document.getElementById('email-list').innerHTML = `
-    <div class="state-box">
-      <div class="state-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B6B45" stroke-width="2"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 11-7.778 7.778 5.5 5.5 0 017.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg></div>
-      <div class="state-title">Gmail access needed</div>
-      <div class="state-desc">Your Gmail session has expired. Please sign in again to reconnect your inbox.</div>
-      <button class="state-btn" onclick="reconnect()">Reconnect Gmail</button>
-    </div>`;
+  document.getElementById('email-list').innerHTML = `<div class="state-box"><div class="state-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B6B45" stroke-width="2"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 11-7.778 7.778 5.5 5.5 0 017.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg></div><div class="state-title">Gmail access needed</div><div class="state-desc">Your Gmail session has expired. Please sign in again.</div><button class="state-btn" onclick="reconnect()">Reconnect Gmail</button></div>`;
+  document.getElementById('kanban-board').innerHTML = '';
   setMeta('Sign in required');
 }
 
-async function reconnect() {
-  await sb.auth.signInWithOAuth({
-    provider: 'google',
-    options: {
-      redirectTo: window.location.origin + '/dashboard.html',
-      scopes: 'https://www.googleapis.com/auth/gmail.readonly',
-      queryParams: { access_type: 'offline', prompt: 'consent' }
-    }
-  });
-}
-
-async function signOut() {
-  await sb.auth.signOut();
-  window.location.href = '/';
-}
-
 function showSkeleton() {
-  document.getElementById('email-list').innerHTML = [1,2,3,4].map(()=>`
-    <div class="sk-row">
-      <div class="sk sk-circ"></div>
-      <div class="sk-lines">
-        <div class="sk sk-line" style="width:${35+Math.random()*20|0}%"></div>
-        <div class="sk sk-line" style="width:${50+Math.random()*25|0}%"></div>
-        <div class="sk sk-line" style="width:${30+Math.random()*20|0}%"></div>
-      </div>
-    </div>`).join('');
+  document.getElementById('email-list').innerHTML = [1,2,3,4].map(()=>`<div class="sk-row"><div class="sk sk-circ"></div><div class="sk-lines"><div class="sk sk-line" style="width:${35+Math.random()*20|0}%"></div><div class="sk sk-line" style="width:${50+Math.random()*25|0}%"></div><div class="sk sk-line" style="width:${30+Math.random()*20|0}%"></div></div></div>`).join('');
+  document.getElementById('kanban-board').innerHTML = '';
 }
 
+function showProcessing(stage, count) {
+  const el = document.getElementById('processing-status');
+  if (stage === 'stage1') {
+    el.innerHTML = `<div class="processing-card"><div class="processing-step"><div class="step-dot active"></div><div class="step-text">Stage 1 — Scanning subject lines and senders for job emails</div></div><div class="processing-step"><div class="step-dot waiting"></div><div class="step-text">Stage 2 — Reading full content of confirmed job emails</div></div><div class="processing-step"><div class="step-dot waiting"></div><div class="step-text">Deduplicating jobs and calculating TAT</div></div></div>`;
+  } else {
+    el.innerHTML = `<div class="processing-card"><div class="processing-step"><div class="step-dot done"></div><div class="step-text">Stage 1 complete — ${count} job emails found</div><div class="step-count">${count} emails</div></div><div class="processing-step"><div class="step-dot active"></div><div class="step-text">Stage 2 — Reading and classifying ${count} emails</div></div><div class="processing-step"><div class="step-dot waiting"></div><div class="step-text">Deduplicating jobs and calculating TAT</div></div></div>`;
+  }
+}
+
+function clearProcessing() { document.getElementById('processing-status').innerHTML = ''; }
+
+async function reconnect() {
+  await sb.auth.signInWithOAuth({ provider:'google', options:{ redirectTo: window.location.origin+'/dashboard.html', scopes:'https://www.googleapis.com/auth/gmail.readonly', queryParams:{access_type:'offline',prompt:'consent'} } });
+}
+
+async function signOut() { await sb.auth.signOut(); window.location.href = '/'; }
 function setMeta(txt) { document.getElementById('list-meta').textContent = txt; }
+function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
-function esc(s) {
-  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-
+// Start in kanban view by default
+document.getElementById('kanban-view').style.display = 'block';
+document.getElementById('list-view').style.display = 'none';
 init();
 </script>
 </body>
